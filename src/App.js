@@ -1,48 +1,37 @@
-import React from 'react';
-import Home from './components/Home/Home'
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
-} from "react-router-dom";
-import './App.scss';
+import React from "react";
+import Home from "./components/Home/Home";
+import Profile from './components/Profile/Profile'
+import Adoption from './components/Adoption/Adoption'
+import Supoort from './components/Supoort/Supoort'
+import Story from './components/Story/Story'
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import "./App.scss";
 
 function App() {
   return (
     <Router>
-    <div className="App">
-     
-     <Switch>
-       {/* <Route path='/about'>
-      <About />
-       </Route>
+      <div className="App">
+        <Switch>
+          <Route path="/adoption/:id">
+            <Profile />
+          </Route>
 
-       <Route path='/support'>
-      <Supoort />
-       </Route>
+          <Route path="/adoption">
+            <Adoption />
+          </Route>
 
-       <Route path='/adoption/:id'>
-      <Profile />
-       </Route>
+          <Route path="/support">
+            <Supoort />
+          </Route>
+          <Route path="/story">
+            <Story />
+          </Route>
 
-       <Route path='/adoption'>
-      <Adoption />
-       </Route>
-
-       <Route path='/story'>
-      <About />
-       </Route> */}
-
-
-       <Route path='/'>
-      <Home />
-       </Route>
-
-     </Switch>
-
-
-    </div>
+          <Route path="/">
+            <Home />
+          </Route>
+        </Switch>
+      </div>
     </Router>
   );
 }

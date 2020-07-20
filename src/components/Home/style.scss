@@ -1,1 +1,65 @@
-@import '../../style/globleStyle.scss';
+@import "../../style/globleStyle.scss";
+.homePage {
+  height: 100vh;
+}
+
+.navBar {
+  @include desktop-padding;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 10%;
+  &__logoImage {
+    height: 5rem;
+  }
+}
+
+.hero {
+  @include desktop-padding;
+  height: 90%;
+  position: relative;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  &__left {
+    height: 60%;
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+  &__right {
+    position: absolute;
+    right: 4rem;
+    height: 70%;
+  }
+  &__heading {
+    // margin-bottom: 2;
+  }
+
+  &__search {
+      width: 100%;
+      display: flex;
+    //   justify-content: space-between;
+  }
+  &__subheading {
+    &Item {
+      width: 100%;
+      margin-bottom: 2em;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+    }
+    &Icon {
+      width: 5%;
+    }
+    &Text{
+        width: 90%;
+    }
+  }
+  &__img {
+    height: 100%;
+  }
+
+}
