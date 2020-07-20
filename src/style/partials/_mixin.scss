@@ -1,0 +1,24 @@
+@import 'variables';
+
+@mixin tablet{
+    @media only screen and (min-width: $tablet){
+        @content
+    }
+};
+@mixin desktop{
+    @media only screen and (min-width: $desktop){
+        @content
+    }
+};
+
+@mixin mobile-padding{
+    padding:0 1.8rem;
+};
+
+@mixin tablet-padding{
+    padding:0 2rem;
+}
+
+@mixin desktop-padding{
+    padding:0 15rem;
+};

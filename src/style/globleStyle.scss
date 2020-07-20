@@ -1,0 +1,58 @@
+// exports all shared partials
+@import 'partials/color';
+@import 'partials/fonts';
+@import 'partials/mixins';
+@import 'partials/variables';
+
+// reset
+
+html {
+    box-sizing: border-box;
+  }
+  
+  *,
+  *:before,
+  *:after {
+    box-sizing: inherit;
+  }
+  // Remove margin, padding and border from everything
+  
+  * {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    max-width: 100%;
+  }
+  
+  // set up
+  html {
+    font-size: 62.5%;
+    color:$primary-font-color;
+  }
+  body {
+    background-color: #fff;
+  }
+
+  a {
+    text-decoration: none;
+    color:$primary-font-color;
+    font-family:$body-font;
+  }
+  
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  h1,h2,h3,h4,h5{
+      font-size:52rem;
+      font-weight:700;
+      font-family: $heading-font;
+  }
+
+ p{
+    font-size:25rem;
+    font-weight:400;
+    font-family: $body-font;
+  }
