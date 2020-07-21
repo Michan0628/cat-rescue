@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Nav from '../Nav/Nav';
 import "./style.scss";
 import { Button } from "rsuite";
 import { Input } from "rsuite";
@@ -27,22 +28,7 @@ export default function Home() {
   return (
     <div className="homePage">
       {/* Navigation bar */}
-      <nav className="navBar">
-        <section className="navBar__logo">
-          <img
-            src="./assets/logo.svg"
-            alt="This is blue logo of cat home"
-            className="navBar__logoImage"
-          />
-        </section>
-        <section className="navBar__hamburger">
-          <img
-            src="./assets/hamburger.svg"
-            alt="This is icon of hamburger menu"
-            className="hamburger"
-          />
-        </section>
-      </nav>
+      <Nav />
       {/* Hero section */}
       <section className="homePage__hero hero">
         {/* Left */}

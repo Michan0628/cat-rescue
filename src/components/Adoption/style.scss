@@ -1,0 +1,14 @@
+@import "../../style/globleStyle.scss";
+.adoptionSearch {
+    
+    &__list {
+    @include desktop-padding;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    background-color: $secondary-background-color;
+  }
+}
+.pagination{
+    background-color: $secondary-background-color;
+}
