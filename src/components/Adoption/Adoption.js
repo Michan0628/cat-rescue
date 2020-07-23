@@ -4,8 +4,12 @@ import axios from "axios";
 import "./style.scss";
 import { Input, InputGroup } from "rsuite";
 import { Icon } from "rsuite";
-
+import Select from 'react-select'
 import breed from '../../data/breed.json'
+import makeAnimated from 'react-select/animated';
+
+const animatedComponents = makeAnimated();
+  
 const breedTags = breed.map(item=>(
     {
         'label':item.name,
@@ -70,7 +74,13 @@ export default function Adoption() {
           </InputGroup.Button>
         </InputGroup>
         {/* selection */}
-
+        <Select
+        className='selectBreed'
+      closeMenuOnSelect={false}
+      components={animatedComponents}
+      isMulti
+      options={breedTags}
+    />
       </section>
       {/* Search Result */}
       <section className="adoptionSearch__result">
