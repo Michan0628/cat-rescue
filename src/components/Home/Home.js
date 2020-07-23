@@ -1,9 +1,13 @@
-import React, { useState } from "react";
+import React, { useState , useEffect} from "react";
 import Nav from '../Nav/Nav';
+import CatSearch from '../CatSearch/CatSearch'
 import "./style.scss";
-import { Button } from "rsuite";
-import { Input } from "rsuite";
 import "rsuite/dist/styles/rsuite-default.css";
+
+
+const bodyParameters = {
+  key: "value"
+};
 
 const styles = {
   width: "70%",
@@ -16,7 +20,9 @@ const buttonStyle = {
 
 
 export default function Home() {
+  const [reasult, setResult] = useState([])
   const [searchTerm, setSearchTerm] = useState("");
+  const [isLoading, setIsLoading] = useState(true);
 
   function handleClick(e) {
     e.preventDefault();
@@ -25,6 +31,9 @@ export default function Home() {
   function handleChange(value) {
     setSearchTerm(value);
   }
+
+ 
+  
   return (
     <div className="homePage">
       {/* Navigation bar */}
@@ -38,21 +47,8 @@ export default function Home() {
           </h1>
 
           {/* search */}
-          <section className="hero__search">
-            <Input
-              style={styles}
-              placeholder="Try 'Toronto'"
-              onChange={handleChange}
-            />
-            <Button
-              style={buttonStyle}
-              appearance="primary"
-              onClick={handleClick}
-            >
-              
-              Get Started
-            </Button>
-          </section>
+          
+             <CatSearch searchText={(text) => setSearchTerm(text)} />
 
           {/* subheading */}
           <section className="hero__subheading">
