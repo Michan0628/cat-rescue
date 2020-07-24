@@ -3,6 +3,7 @@ import Card from "../Card/Card";
 import Nav from "../Nav/Nav";
 import axios from "axios";
 import "./style.scss";
+import { Pagination } from 'rsuite';
 import { Input, InputGroup } from "rsuite";
 import { InputPicker } from "rsuite";
 import { Icon } from "rsuite";
@@ -11,7 +12,7 @@ import breed from "../../data/breed.json";
 import color from "../../data/color.json";
 
 const TOKEN =
-  "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIweGpDSkR6M3VIWWRIeWZFbU1uVExiMkhUd1dnSHNjTkxnclhYMGp0NkloUkNSek1obyIsImp0aSI6IjJjYThhMDNjMDA3ZDU3NjBlNzliNGNjNGFiYmQwN2NhZGUwOGRkMmViZmY5ZTYxYmE2YzNiOGE2MzQxODU4NTc1ODA3MTlkYTJhZDFkMWM2IiwiaWF0IjoxNTk1NTYxNjUyLCJuYmYiOjE1OTU1NjE2NTIsImV4cCI6MTU5NTU2NTI1Miwic3ViIjoiIiwic2NvcGVzIjpbXX0.pa67M9SBtXC-UpW7Wdq18RP878jW8ejY-W6oKj7VRgCDyA0BKLpcs00nsoan-Vgwu_YXi2v9hkEDR6X7SWC09WPeUCKE1PUv1uLOFbsUegaglc5uni0g2PCRuTf7gW0zmwvAD-bvNYMnTCtrREnXSqrx1U7jQ_03g2VmPEXzY2tSLwocYd1k_lHlkT_Nr-3IDeI8VD6C24_n4JwU-xC5brUWPdn6wfNA54HGG9yJ-1iqjROa3F_vl8jjzymMJb4Jg1XDMRmPUHzAge5nqN2003k4CJfE_Pz_c4X4n5yHokwdMg493NMBRqpw3yitZIqg3jQn35Y-_fNsg47URA1NTw";
+  "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIweGpDSkR6M3VIWWRIeWZFbU1uVExiMkhUd1dnSHNjTkxnclhYMGp0NkloUkNSek1obyIsImp0aSI6IjVkNWUzZGI3NGNiMzIzMjI2MGEzY2ZkMzcyZjhiZTdhNGM4Y2EyNDNlNzY0Y2QyM2JkMzc4MDc3YjU3YjdiNjlmNjRlODVlNTU5YTA0ZDZkIiwiaWF0IjoxNTk1NTY1Mzk2LCJuYmYiOjE1OTU1NjUzOTYsImV4cCI6MTU5NTU2ODk5Niwic3ViIjoiIiwic2NvcGVzIjpbXX0.xew8kk9BwwLzs52hWx6P_o-GvrQ1g7uSiu285vkcCvff6f3qQlbvvmZKqdlA-Zq4keVDMzO4fgLO6tuaKgBLw37X-J_u4AFl4nq2Jfb_jS95NLU0rDxuVc2Lxnq1Qi6obcb02PmSBuj6e00bLDwi4b50uieiEg1xSJSbp6XTPH3tlWDYZOWUW1UKfDfj7X59vj1qMG09hP-axyQ-euuks8RvLXocTZrvqsT-8-FekABuziEVhlGslJ_wkuwTRlqXw9Vm1lbBARQ6-PyPvd46FQRIVcM3MZ1CWcsA2CZBzeKRkXMmQviZBNw8R8-uhodFTKxEDGib7QUWMGzjaE3CPQ";
 
 // tags data
 const breedTags = breed.map((item) => ({
@@ -63,6 +64,8 @@ const buttonStyle = {
 };
 
 export default function Adoption() {
+    const [activePage, setActivePage]=useState(1);
+    const [totalPage, setTotalPage]=useState();
   const [result, setResult] = useState([]);
   const [searchTerm, setSearchTerm] = useState("toronto, on");
   const [isLoading, setIsLoading] = useState(false);
@@ -78,18 +81,20 @@ export default function Adoption() {
   const [goodWithCats, setGoodWithCats] = useState();
 
   useEffect(() => {
-      const goodCatsQuery = goodWithCats===true ? ('&good_with_cats=true'):('')
-      const goodDogsQuery = goodWithDogs===true ? ('&good_with_dogs=true'):('')
-      const goodChildrenQuery = goodWithChildren===true ? ('&good_with_children=true'):('')
+    const goodCatsQuery = goodWithCats === true ? "&good_with_cats=true" : "";
+    const goodDogsQuery = goodWithDogs === true ? "&good_with_dogs=true" : "";
+    const goodChildrenQuery =
+      goodWithChildren === true ? "&good_with_children=true" : "";
     axios
       .get(
-        `https://api.petfinder.com/v2/animals?type=cat&sort=distance&limit=21&page=1&location=${searchTerm}&breed=${breed}&gender=${gender}&color=${color}&age=${age}${goodCatsQuery}${goodDogsQuery}${goodChildrenQuery}`,
+        `https://api.petfinder.com/v2/animals?type=cat&sort=distance&limit=21&page=${activePage}&location=${searchTerm}&breed=${breed}&gender=${gender}&color=${color}&age=${age}${goodCatsQuery}${goodDogsQuery}${goodChildrenQuery}`,
         config
       )
       .then((res) => {
         console.log(res.data.animals);
         setTotalCount(res.data.pagination.total_count);
         setResult(res.data.animals);
+        setTotalPage(res.data.pagination.total_pages)
         setIsLoading(false);
         setErrorMessage("");
       })
@@ -106,9 +111,17 @@ export default function Adoption() {
           setResult([]);
         }
       });
-  }, [searchTerm, breed, color, age, gender, goodWithChildren, goodWithCats, goodWithDogs]);
-
-  
+  }, [
+    searchTerm,
+    breed,
+    color,
+    age,
+    gender,
+    goodWithChildren,
+    goodWithCats,
+    goodWithDogs,
+    activePage
+  ]);
 
   const handleClick = (e) => {
     e.preventDefault();
@@ -146,7 +159,7 @@ export default function Adoption() {
             <h2 className="adoptionSearch__heading adoptionSearch__heading-third">
               <div className="container">
                 You have found <span className="highlight"> {totalCount} </span>
-                listings for cats available in 
+                listings for cats available near
                 <span className="highlight"> {searchTerm}</span>
               </div>
             </h2>
@@ -220,21 +233,21 @@ export default function Adoption() {
                 style={{ width: "100%" }}
                 placeholder="Any"
                 onChange={(value, event) => {
-                if (value.indexOf('children')!==-1){
+                  if (value.indexOf("children") !== -1) {
                     setGoodWithChildren(true);
-                }else{
-                    setGoodWithChildren()
-                }
-                if(value.indexOf('dogs')!==-1){
-                    setGoodWithDogs(true)
-                }else{
-                    setGoodWithDogs()
-                }
-                if (value.indexOf('cats')!==-1){
-                    setGoodWithCats(true)
-                } else{
-                    setGoodWithCats()
-                }
+                  } else {
+                    setGoodWithChildren();
+                  }
+                  if (value.indexOf("dogs") !== -1) {
+                    setGoodWithDogs(true);
+                  } else {
+                    setGoodWithDogs();
+                  }
+                  if (value.indexOf("cats") !== -1) {
+                    setGoodWithCats(true);
+                  } else {
+                    setGoodWithCats();
+                  }
                 }}
               />
             </section>
@@ -257,11 +270,28 @@ export default function Adoption() {
                 ))}
               </div>
             )}
-          </section>
-          <div className="pagination">
-            <button className="previous">Previous Page</button>
-            <button className="next">Next Page</button>
+
+<div className="adoptionSearch__pagination">
+    {result.length !== 0 && !isLoading &&(
+
+            <Pagination
+              prev
+              next
+              first
+              last
+              ellipsis
+              boundaryLinks
+              activePage={activePage}
+              onSelect={(eventKey) => setActivePage(eventKey)}
+              pages={totalPage}
+              maxButtons={5}
+              size='lg'
+
+            />
+    )}
           </div>
+          </section>
+          
         </section>
       </div>
     </>

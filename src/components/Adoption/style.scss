@@ -54,19 +54,25 @@
     width: 70%;
   }
   &__notFound{
+    height:50%;
     display: flex;
     justify-content: center;
+    align-items: center;
   }
   &__container {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
   }
+  &__pagination {
+    background-color: $secondary-background-color;
+    display: flex;
+    justify-content: center;
+    margin-bottom:2rem;
+  }
 }
 .highlight{
 color:$primary-color;
 text-transform:uppercase;
 }
-.pagination {
-  background-color: $secondary-background-color;
-}
+
