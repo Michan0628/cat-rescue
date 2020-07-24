@@ -5,7 +5,8 @@
     height: 350px;
     width: 220px;
     margin-bottom: 4em;
-    box-shadow: 15px 15px 27px #e1e1e3, -15px -15px 27px #ffffff;
+    // box-shadow: 15px 15px 27px #e1e1e3, -15px -15px 27px #ffffff;
+    box-shadow:0 5px 4.8px 0.3px rgba(66,135,150,.12);
   
     &__photo {
       border-radius: 12px 12px 0 0;
@@ -29,11 +30,13 @@
     }
     &__breed,
     &__location {
-        font-weight: 500;
+        font-weight: 600;
+        font-family: $body-font;
       color: $primary-color;
       font-size: 1.5rem;
     }
     &__learnMore {
+      font-family: $heading-font;
       display: flex;
       justify-content: space-between;
       align-items: center;
