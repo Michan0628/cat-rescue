@@ -63,6 +63,10 @@
     flex-wrap: wrap;
   }
 }
+.highlight{
+color:$primary-color;
+text-transform:uppercase;
+}
 .pagination {
   background-color: $secondary-background-color;
 }

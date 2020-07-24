@@ -3,16 +3,7 @@
   height: 100vh;
 }
 
-.navBar {
-  @include desktop-padding;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 10%;
-  &__logoImage {
-    height: 5rem;
-  }
-}
+
 
 .hero {
   @include desktop-padding;
