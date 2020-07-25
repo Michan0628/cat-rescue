@@ -1,0 +1,55 @@
+@import "../../style/globleStyle.scss";
+
+.adoptionDetail {
+
+  &__hero {
+    @include desktop-padding;
+    background-color: white;
+    height: 40vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    &-left {
+      width: 40%;
+    }
+    &-right {
+      width: 40%;
+    }
+  }
+  &__body {
+    @include desktop-padding;
+    background: $secondary-background-color;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  &__shelter {
+    display: flex;
+    flex-direction: column;
+    padding:2rem 0;
+    margin: 2rem 0;
+    height: 28rem;
+    width: 40rem;
+    background-color: white;
+  }
+  &__story {
+    height: 30%;
+    width: 30%;
+    background-color: white;
+  }
+}
+
+.slider {
+  height: 200px;
+  width: 400px;
+  background-color: darkslateblue;
+}
+.rs-carousel {
+  width: 100%;
+  height: 100%;
+  img {
+    width: 100%;
+
+    object-fit: cover;
+  }
+}

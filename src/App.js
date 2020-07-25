@@ -1,4 +1,6 @@
 import React from "react";
+import Nav from './components/Nav/Nav'
+import Footer from './components/Footer/Footer'
 import Home from "./components/Home/Home";
 import Profile from './components/Profile/Profile'
 import Adoption from './components/Adoption/Adoption'
@@ -11,6 +13,7 @@ import "./App.scss";
 function App() {
   return (
     <Router>
+      <Nav />
       <div className="App">
         <Switch>
           <Route path="/adoption/:id">
@@ -37,6 +40,7 @@ function App() {
           </Route>
         </Switch>
       </div>
+      <Footer />
     </Router>
   );
 }

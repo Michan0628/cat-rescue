@@ -37,7 +37,7 @@ export default function Home() {
   return (
     <div className="homePage">
       {/* Navigation bar */}
-      <Nav />
+
       {/* Hero section */}
       <section className="homePage__hero hero">
         {/* Left */}

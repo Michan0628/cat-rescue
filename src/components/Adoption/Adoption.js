@@ -12,7 +12,7 @@ import breed from "../../data/breed.json";
 import color from "../../data/color.json";
 
 const TOKEN =
-  "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIweGpDSkR6M3VIWWRIeWZFbU1uVExiMkhUd1dnSHNjTkxnclhYMGp0NkloUkNSek1obyIsImp0aSI6IjVkNWUzZGI3NGNiMzIzMjI2MGEzY2ZkMzcyZjhiZTdhNGM4Y2EyNDNlNzY0Y2QyM2JkMzc4MDc3YjU3YjdiNjlmNjRlODVlNTU5YTA0ZDZkIiwiaWF0IjoxNTk1NTY1Mzk2LCJuYmYiOjE1OTU1NjUzOTYsImV4cCI6MTU5NTU2ODk5Niwic3ViIjoiIiwic2NvcGVzIjpbXX0.xew8kk9BwwLzs52hWx6P_o-GvrQ1g7uSiu285vkcCvff6f3qQlbvvmZKqdlA-Zq4keVDMzO4fgLO6tuaKgBLw37X-J_u4AFl4nq2Jfb_jS95NLU0rDxuVc2Lxnq1Qi6obcb02PmSBuj6e00bLDwi4b50uieiEg1xSJSbp6XTPH3tlWDYZOWUW1UKfDfj7X59vj1qMG09hP-axyQ-euuks8RvLXocTZrvqsT-8-FekABuziEVhlGslJ_wkuwTRlqXw9Vm1lbBARQ6-PyPvd46FQRIVcM3MZ1CWcsA2CZBzeKRkXMmQviZBNw8R8-uhodFTKxEDGib7QUWMGzjaE3CPQ";
+  "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIweGpDSkR6M3VIWWRIeWZFbU1uVExiMkhUd1dnSHNjTkxnclhYMGp0NkloUkNSek1obyIsImp0aSI6IjA3NmYxZTMxZDFlYTQzZTRmYWRhOTZlNDQ2YjAxZTM2YjdhZjliYzQwYTAyMGQwODViMzY5MjM4OGVhNzQ4ZTU5YjYzODczOTU5NjU5YTFhIiwiaWF0IjoxNTk1NjE5NzkwLCJuYmYiOjE1OTU2MTk3OTAsImV4cCI6MTU5NTYyMzM5MCwic3ViIjoiIiwic2NvcGVzIjpbXX0.fT1uTMgj_Ga1Jjxsa6pNsl4_WAEL_C_iE9m4Qmlb4FNh_lECmcPL03USI8OKdPJ9SAwwSfT-ssI0j1Qd7Tdh3XEs6UItJ5Y-zO6M-Xb39r51qstiBFSpUt2-qZmV9KHJXlkk7r78dKVibdRUg9SvQGr8kv0QlVAc9LvU9Vefx8uehUsq_7gp2n9Na4TEsE0eFZm0_aa0K8ccCDITv5Bvi58cpXl_QutL_vdsW5N-Xn1OG8HT53vO_jlqV_TuZQW4psiEhgRVb0WnN-2nntHcMDnzqoFI7zSvQWuy0MluBhyAH_5Gs7IA1o1gabKo3kZ8Z8g8eRQBbPi_j-lIBM2mMA";
 
 // tags data
 const breedTags = breed.map((item) => ({
@@ -134,7 +134,6 @@ export default function Adoption() {
 
   return (
     <>
-      <Nav />
       <div className="adoptionSearch">
         <section className="adoptionSearch__heading">
           <h1 className="adoptionSearch__heading-main">We're here for them</h1>
@@ -177,7 +176,9 @@ export default function Adoption() {
                 style={{ width: "100%" }}
                 placeholder="Any"
                 onChange={(value, event) => {
-                  setBreed(value.join());
+                if(value !== null){
+                    setBreed(value.join());
+                }else(setBreed())
                 }}
                 name="breed"
               />
