@@ -1,6 +1,9 @@
 @import "../../style/globleStyle.scss";
 
 .adoptionDetail {
+  &__greeting{
+    color:$primary-color;
+  }
 
   &__hero {
     @include desktop-padding;
@@ -10,32 +13,88 @@
     justify-content: space-between;
     align-items: center;
     &-left {
-      width: 40%;
+      height: 100%;
+      width: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
     &-right {
-      width: 40%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      width: 48%;
     }
   }
   &__body {
     @include desktop-padding;
+    padding-top:4rem;
     background: $secondary-background-color;
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
+  }
+  &__card{
+    background-color: white;
+    padding:2rem;
+    margin: 2rem 0;
+    width: 50rem;
+    min-height: 28rem;
+    &-greeting{
+      min-height: 25rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      
+    }
   }
   &__shelter {
     display: flex;
     flex-direction: column;
-    padding:2rem 0;
-    margin: 2rem 0;
-    height: 28rem;
-    width: 40rem;
-    background-color: white;
+    &-heading{
+      margin-bottom: 2rem;
+    }
+    &-name{
+      color:$primary-color;
+      font-family: $heading-font;
+      margin-bottom: 4rem;
+      font-size:3rem;
+    }
+    &-contact{
+      display: flex;
+      margin-bottom: 2rem;
+      div{
+      font-family: $body-font;
+        font-size:1.8rem;
+        color:$primary-font-color;
+        font-weight:300;
+      }
+    }
+    &-icon{
+      width: 2rem;
+      margin-right: 2rem;
+    }
   }
   &__story {
-    height: 30%;
-    width: 30%;
-    background-color: white;
+    background-color: $secondary-background-color;
+    &-heading{
+      margin-bottom:2rem;
+    }
+    &-body{
+      font-size:1.8rem;
+      line-height:2.6rem;
+      font-family: $body-font;
+      font-weight: 300;
+      color:$primary-font-color;
+    }
+  }
+  
+  &__info > *{
+    margin-bottom: 1rem;
+    font-size:1.8rem;
+    font-family: $body-font;
+    color:$primary-font-color;
   }
 }
 

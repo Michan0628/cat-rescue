@@ -1,0 +1,87 @@
+@import "../../style/globleStyle.scss";
+
+.footer {
+  background: $secondary-background-color;
+  &__container {
+    @include desktop-padding;
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+    align-items: center;
+  }
+  &__card {
+    background-color: white;
+    padding: 4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 0.5rem;
+    width: 44rem;
+    height: 18rem;
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+    &-body {
+      font-family: $heading-font;
+      font-weight:300;
+      font-size: 2.2rem;
+      text-align: center;
+    color:$primary-font-color;
+
+    }
+    &-workTime {
+      display: flex;
+      justify-content: space-evenly;
+    }
+    //   justify-content: space-evenly;
+    &-heading {
+      display: flex;
+      margin-bottom: 2rem;
+      justify-content: center;
+      &-txt {
+        color: $primary-color;
+        font-size:3.5rem;
+        font-weight: 800;
+      }
+
+      img {
+        width: 3rem;
+        margin-right: 1rem;
+      }
+    }
+  }
+  &__icons {
+    @include desktop-padding;
+    display: flex;
+    justify-content: space-between;
+    padding-bottom:6rem;
+    align-items: flex-end;
+  }
+  &__logo {
+    width: 25rem;
+  }
+  &__share {
+    width: 40%;
+    display: flex;
+    justify-content: space-evenly;
+    img {
+      height: 5rem;
+    }
+  }
+  &__nav {
+    @include desktop-padding;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 2rem;
+    font-size:2rem;
+    font-weight:300;
+    font-family: $body-font;
+    color:$primary-font-color;
+    height: 8rem;
+
+    &-end {
+      display: flex;
+
+    }
+  }
+}
