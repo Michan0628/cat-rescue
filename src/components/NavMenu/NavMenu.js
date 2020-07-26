@@ -9,7 +9,7 @@ export default function NavMenu() {
 
   return (
     <div className='navMenu'>
-        <img src="./assets/svg/logo.svg" alt="the blue logo of cat home" className="navMenu__logo"/>
+        <img src={require("../../assets/SVG/logo.svg")} alt="the blue logo of cat home" className="navMenu__logo"/>
         <div className="burgerIcon">
 
       <Hamburger toggled={isOpen} toggle={setOpen} color="#58B5C9" rounded className='burgerIcon'/>

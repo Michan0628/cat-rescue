@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import Card from "../Card/Card";
-import Nav from "../Nav/Nav";
 import axios from "axios";
 import "./style.scss";
-import { Pagination } from 'rsuite';
+import { Pagination } from "rsuite";
 import { Input, InputGroup } from "rsuite";
 import { InputPicker } from "rsuite";
 import { Icon } from "rsuite";
@@ -12,7 +12,7 @@ import breed from "../../data/breed.json";
 import color from "../../data/color.json";
 
 const TOKEN =
-  "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIweGpDSkR6M3VIWWRIeWZFbU1uVExiMkhUd1dnSHNjTkxnclhYMGp0NkloUkNSek1obyIsImp0aSI6IjA3NmYxZTMxZDFlYTQzZTRmYWRhOTZlNDQ2YjAxZTM2YjdhZjliYzQwYTAyMGQwODViMzY5MjM4OGVhNzQ4ZTU5YjYzODczOTU5NjU5YTFhIiwiaWF0IjoxNTk1NjE5NzkwLCJuYmYiOjE1OTU2MTk3OTAsImV4cCI6MTU5NTYyMzM5MCwic3ViIjoiIiwic2NvcGVzIjpbXX0.fT1uTMgj_Ga1Jjxsa6pNsl4_WAEL_C_iE9m4Qmlb4FNh_lECmcPL03USI8OKdPJ9SAwwSfT-ssI0j1Qd7Tdh3XEs6UItJ5Y-zO6M-Xb39r51qstiBFSpUt2-qZmV9KHJXlkk7r78dKVibdRUg9SvQGr8kv0QlVAc9LvU9Vefx8uehUsq_7gp2n9Na4TEsE0eFZm0_aa0K8ccCDITv5Bvi58cpXl_QutL_vdsW5N-Xn1OG8HT53vO_jlqV_TuZQW4psiEhgRVb0WnN-2nntHcMDnzqoFI7zSvQWuy0MluBhyAH_5Gs7IA1o1gabKo3kZ8Z8g8eRQBbPi_j-lIBM2mMA";
+  "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIweGpDSkR6M3VIWWRIeWZFbU1uVExiMkhUd1dnSHNjTkxnclhYMGp0NkloUkNSek1obyIsImp0aSI6IjkzMmI1YjczZTQ2MTdlYmFlZTU1ZjYwMmVmNWYyN2I2OGM2NWZlMWU1M2FiMmNhYTYxOTgyMTc0YmU4MTZkZGExMTI4NzM4NWM0NjM4NWM2IiwiaWF0IjoxNTk1NzM0MzQ1LCJuYmYiOjE1OTU3MzQzNDUsImV4cCI6MTU5NTczNzk0NSwic3ViIjoiIiwic2NvcGVzIjpbXX0.R1ezWmo3FDF-KifgANocErqZwLURp37rMyRIgzKq4KO2ofgdUUaLZDV_w16MHEMNvI3-yCC1luuyrW-fHwhl1N2GOXUwkT3EBHigjTJdYR4w194GvNXVBKRCkw32CtKYSy8uuj-4v-rwH76e4zHyj3-gI78hW4PAYC4js-uZrTKrfjmPwsq5exAk-4rCYqQelDS0WObiEwiso4fNnztdYArkEEnaoln9w4GQaHwlROXqQdpoqsyEfHGXiALlJkDA6mtprBSxO4fm51hXNR9Ai8uFcchKqub0ZDT1seo-hNx0VatmOJIGAnak5AhW0FIZCrDJ4eB4R_usyR3_VuKvtQ";
 
 // tags data
 const breedTags = breed.map((item) => ({
@@ -64,8 +64,8 @@ const buttonStyle = {
 };
 
 export default function Adoption() {
-    const [activePage, setActivePage]=useState(1);
-    const [totalPage, setTotalPage]=useState();
+  const [activePage, setActivePage] = useState(1);
+  const [totalPage, setTotalPage] = useState();
   const [result, setResult] = useState([]);
   const [searchTerm, setSearchTerm] = useState("toronto, on");
   const [isLoading, setIsLoading] = useState(false);
@@ -94,7 +94,7 @@ export default function Adoption() {
         console.log(res.data.animals);
         setTotalCount(res.data.pagination.total_count);
         setResult(res.data.animals);
-        setTotalPage(res.data.pagination.total_pages)
+        setTotalPage(res.data.pagination.total_pages);
         setIsLoading(false);
         setErrorMessage("");
       })
@@ -120,7 +120,7 @@ export default function Adoption() {
     goodWithChildren,
     goodWithCats,
     goodWithDogs,
-    activePage
+    activePage,
   ]);
 
   const handleClick = (e) => {
@@ -136,37 +136,38 @@ export default function Adoption() {
     <>
       <div className="adoptionSearch">
         <div className="adoptionSearch__hero">
-
-       
-        <section className="adoptionSearch__heading">
-          <h1 className="adoptionSearch__heading-main">We're here for them</h1>
-          <h2 className="adoptionSearch__heading-second">
-            They're always there for you
-          </h2>
-        </section>
-        {/* Search Form */}
-        <section className="adoptionSearch__input">
-          <InputGroup inside style={styles} size="lg">
-            <Input style={inputStyle} size="lg" onChange={handleChange} />
-            <InputGroup.Button style={buttonStyle} onClick={handleClick}>
-              <Icon icon="search" />
-            </InputGroup.Button>
-          </InputGroup>
-        </section>
-        {/* error message */}
-        <div className="adoptionSearch__errorMessage">
-          {errorMessage ? (
-            <h5>{errorMessage}</h5>
-          ) : (
-            <h2 className="adoptionSearch__heading adoptionSearch__heading-third">
-              <div className="container">
-                You have found <span className="highlight"> {totalCount} </span>
-                listings for cats available near
-                <span className="highlight"> {searchTerm}</span>
-              </div>
+          <section className="adoptionSearch__heading">
+            <h1 className="adoptionSearch__heading-main">
+              We're here for them
+            </h1>
+            <h2 className="adoptionSearch__heading-second">
+              They're always there for you
             </h2>
-          )}
-        </div>
+          </section>
+          {/* Search Form */}
+          <section className="adoptionSearch__input">
+            <InputGroup inside style={styles} size="lg">
+              <Input style={inputStyle} size="lg" onChange={handleChange} placeholder='Search for "city, state" or postal code'/>
+              <InputGroup.Button style={buttonStyle} onClick={handleClick}>
+                <Icon icon="search" />
+              </InputGroup.Button>
+            </InputGroup>
+          </section>
+          {/* error message */}
+          <div className="adoptionSearch__errorMessage">
+            {errorMessage ? (
+              <h5>{errorMessage}</h5>
+            ) : (
+              <h2 className="adoptionSearch__heading adoptionSearch__heading-third">
+                <div className="container">
+                  You have found{" "}
+                  <span className="highlight"> {totalCount} </span>
+                  listings for cats available near
+                  <span className="highlight"> {searchTerm}</span>
+                </div>
+              </h2>
+            )}
+          </div>
         </div>
         {/* Search Result */}
         <section className="adoptionSearch__body">
@@ -180,9 +181,9 @@ export default function Adoption() {
                 style={{ width: "100%" }}
                 placeholder="Any"
                 onChange={(value, event) => {
-                if(value !== null){
+                  if (value !== null) {
                     setBreed(value.join());
-                }else(setBreed())
+                  } else setBreed();
                 }}
                 name="breed"
               />
@@ -271,32 +272,31 @@ export default function Adoption() {
             ) : (
               <div className="adoptionSearch__container">
                 {result.map((cat) => (
-                  <Card key={cat.id} cat={cat} />
+                <Link key={cat.id} to={`/adoption/${cat.id}`}>
+                  <Card cat={cat} />
+                </Link>
                 ))}
               </div>
             )}
 
-<div className="adoptionSearch__pagination">
-    {result.length !== 0 && !isLoading &&(
-
-            <Pagination
-              prev
-              next
-              first
-              last
-              ellipsis
-              boundaryLinks
-              activePage={activePage}
-              onSelect={(eventKey) => setActivePage(eventKey)}
-              pages={totalPage}
-              maxButtons={5}
-              size='lg'
-
-            />
-    )}
-          </div>
+            <div className="adoptionSearch__pagination">
+              {result.length !== 0 && !isLoading && (
+                <Pagination
+                  prev
+                  next
+                  first
+                  last
+                  ellipsis
+                  boundaryLinks
+                  activePage={activePage}
+                  onSelect={(eventKey) => setActivePage(eventKey)}
+                  pages={totalPage}
+                  maxButtons={5}
+                  size="lg"
+                />
+              )}
+            </div>
           </section>
-          
         </section>
       </div>
     </>

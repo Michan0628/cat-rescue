@@ -7,7 +7,7 @@ export default function Footer() {
             <div className="footer__container">
                 <div className="footer__card footer__card-one">
                     <div className="footer__card-heading">
-                    <img src="./assets/svg/Icon-phone.svg" alt="phone icon"/>
+                    <img src={require("../../assets/SVG/Icon-phone.svg")} alt="phone icon"/>
                     <h3 className="footer__card-heading-txt">1-647-978-0544</h3>
                     </div>
                     <div className="footer__card-body footer__card-workTime">
@@ -21,7 +21,7 @@ export default function Footer() {
                 </div>
                 <div className="footer__card footer__card-two">
                     <div className="footer__card-heading">
-                    <img src="./assets/svg/Icon-email.svg" alt="mail icon"/>
+                    <img src={require("../../assets/SVG/Icon-email.svg")} alt="mail icon"/>
                     <h2 className="footer__card-heading-txt">CONTACT</h2>
                     </div>
                     <div className="footer__card-body">
@@ -32,12 +32,12 @@ export default function Footer() {
 
             <div className="footer__icons">
 
-                <img src="./assets/logo.svg" alt="blue logo of cat home" className='footer__logo'/>
+                <img src={require("../../assets/SVG/logo.svg")} alt="blue logo of cat home" className='footer__logo'/>
             <div className="footer__share">
-                <img src="./assets/svg/facebook.svg" alt="The share button for facebook" className="footer__facebook"/>
-                <img src="./assets/svg/twitter.svg" alt="The share button for twitter" className="footer__instagram"/>
-                <img src="./assets/svg/instagram.svg" alt="The share button for instagram" className="footer__facebook"/>
-                <img src="./assets/svg/behance.svg" alt="The share button for behance" className="footer__behance"/>
+                <img src={require("../../assets/SVG/facebook.svg")} alt="The share button for facebook" className="footer__facebook"/>
+                <img src={require("../../assets/SVG/twitter.svg")} alt="The share button for twitter" className="footer__instagram"/>
+                <img src={require("../../assets/SVG/instagram.svg")} alt="The share button for instagram" className="footer__facebook"/>
+                <img src={require("../../assets/SVG/behance.svg")} alt="The share button for behance" className="footer__behance"/>
             </div>
             </div>
             {/* <div className="footer__nav-wrapper">

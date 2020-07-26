@@ -1,6 +1,12 @@
 @import "../../style/globleStyle.scss";
 
 .adoptionSearch {
+  // disable the effect from react router Link 
+  a{
+    text-decoration: none;
+    color:inherit;
+  }
+  // style for hero
   &__hero{
     height:50rem;
     padding-top: 12rem;
@@ -38,7 +44,9 @@
     flex-direction: column;
     align-items: center;
     width: 40%;
+    z-index: 0;
   }
+  // style for the body of search result 
   &__body {
     @include desktop-padding;
     background-color: $secondary-background-color;
@@ -47,10 +55,13 @@
     justify-content: space-between;
     padding-top:7rem;
   }
+
+  // style the filter 
   &__tags {
     display: flex;
     flex-direction: column;
     width: 25%;
+    z-index: 0;
   }
   &__tagGroup{
     margin-bottom:2rem;
@@ -73,6 +84,7 @@
     justify-content: space-between;
     flex-wrap: wrap;
   }
+  // style the pagination
   &__pagination {
     background-color: $secondary-background-color;
     display: flex;
@@ -80,6 +92,7 @@
     margin-bottom:2rem;
   }
 }
+// add additional highlight for text
 .highlight{
 color:$primary-color;
 text-transform:uppercase;
