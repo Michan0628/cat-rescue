@@ -8,10 +8,11 @@
   &__hero {
     @include desktop-padding;
     background-color: white;
-    height: 40vh;
+    height: 52vh;
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-end;
+    padding-top:8rem;
     &-left {
       height: 100%;
       width: 50%;

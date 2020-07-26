@@ -1,5 +1,6 @@
 import React, { useState , useEffect} from "react";
 import Nav from '../Nav/Nav';
+import NavMenu from '../NavMenu/NavMenu'
 import CatSearch from '../CatSearch/CatSearch'
 import "./style.scss";
 import "rsuite/dist/styles/rsuite-default.css";
@@ -37,7 +38,6 @@ export default function Home() {
   return (
     <div className="homePage">
       {/* Navigation bar */}
-
       {/* Hero section */}
       <section className="homePage__hero hero">
         {/* Left */}

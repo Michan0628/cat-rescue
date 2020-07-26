@@ -7,19 +7,26 @@ import Adoption from './components/Adoption/Adoption'
 import Supoort from './components/Supoort/Supoort'
 import Story from './components/Story/Story'
 import AdoptionDetail from './components/AdoptionDetail/AdoptionDetail'
+import NavMenu from './components/NavMenu/NavMenu'
+
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import "./App.scss";
 
 function App() {
   return (
     <Router>
-      <Nav />
+<NavMenu />
+
+
       <div className="App">
         <Switch>
           <Route path="/adoption/:id">
             <Profile />
           </Route>
 
+        <Route path='/menupage'>
+          <NavMenu />
+        </Route>
 
           <Route path="/adoption">
             <Adoption />

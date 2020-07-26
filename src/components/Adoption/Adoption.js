@@ -52,7 +52,7 @@ const config = {
 };
 // style for form input
 const styles = {
-  width: "50%",
+  width: "100%",
   marginBottom: 10,
 };
 const inputStyle = {
@@ -135,6 +135,9 @@ export default function Adoption() {
   return (
     <>
       <div className="adoptionSearch">
+        <div className="adoptionSearch__hero">
+
+       
         <section className="adoptionSearch__heading">
           <h1 className="adoptionSearch__heading-main">We're here for them</h1>
           <h2 className="adoptionSearch__heading-second">
@@ -163,6 +166,7 @@ export default function Adoption() {
               </div>
             </h2>
           )}
+        </div>
         </div>
         {/* Search Result */}
         <section className="adoptionSearch__body">

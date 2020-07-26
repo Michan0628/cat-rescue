@@ -1,0 +1,76 @@
+.navMenu{
+    position:fixed;
+    top:0;
+    left:0;
+    z-index:1;
+    background-color: white;
+    &__logo{
+        height: 5rem;
+        position: fixed;
+        left: 6rem;
+        top:6rem;
+    }
+}
+.menu{
+    &__wrapper{
+        height:0;
+        transition:height .6s cubic-bezier(0.15, 0, 0.1, 1);
+        overflow: hidden;
+        &-open{
+            height:100vh;
+        }
+    }
+    position: relative;
+    top:0;
+    left:0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    transition:height .6s cubic-bezier(0.15, 0, 0.1, 1);
+
+    &__nav{
+        padding: 0 0 10rem 6rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 50rem;
+    }
+    &__footer{
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        width: 36rem;
+        padding:0 6rem 8rem 0;
+
+    }
+    &__share{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 34rem;
+        padding-bottom: 4rem;
+        img{
+            width: 5rem;
+        }
+    }
+    &__cat{
+        width: 12rem;
+        
+    }
+
+
+}
+.burgerIcon{
+    position: fixed;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top:6rem;
+    right:6rem;
+    z-index: 99;
+}

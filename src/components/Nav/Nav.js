@@ -1,6 +1,6 @@
 import React from 'react'
 import './style.scss'
-
+import Burger from '../Burger/Burger'
 export default function Nav() {
     return (
         <nav className="navBar">
@@ -12,11 +12,7 @@ export default function Nav() {
           />
         </section>
         <section className="navBar__hamburger">
-          <img
-            src="./assets/hamburger.svg"
-            alt="This is icon of hamburger menu"
-            className="hamburger"
-          />
+          <Burger />
         </section>
       </nav>
     )

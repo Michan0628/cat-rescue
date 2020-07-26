@@ -1,6 +1,14 @@
 @import "../../style/globleStyle.scss";
 
 .adoptionSearch {
+  &__hero{
+    height:50rem;
+    padding-top: 12rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
   &__heading {
     display: flex;
     flex-direction: column;
@@ -29,6 +37,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 40%;
   }
   &__body {
     @include desktop-padding;
