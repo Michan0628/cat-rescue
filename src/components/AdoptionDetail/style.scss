@@ -76,7 +76,12 @@
       width: 2rem;
       margin-right: 2rem;
     }
+    &-website{
+      color:$primary-font-color;
+      text-decoration: none;
+    }
   }
+  
   &__story {
     background-color: $secondary-background-color;
     &-heading{

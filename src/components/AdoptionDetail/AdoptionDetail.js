@@ -111,7 +111,10 @@ export default function AdoptionDetail() {
       className="adoptionDetail__shelter-icon"
     />
     <div className="adoptionDetail__location">
-    {shelterContact.website === null ? ('null'):(shelterContact.website)}
+    {shelterContact.website === null ? ('null'):(
+      <a className='adoptionDetail__shelter-website hvr-bounce-to-right' href={shelterContact.website}>{shelterContact.website}</a>
+
+    )}
     </div>
   </section>
   <section className="adoptionDetail__shelter-contact">
