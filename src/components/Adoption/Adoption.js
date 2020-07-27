@@ -138,6 +138,12 @@ export default function Adoption() {
     setLocationQuery(value.toLowerCase());
   };
 
+  const handleKeyUp=(e)=>{
+    if(e.key==='Enter'){
+      document.getElementById('searchPageButton').click()
+    }
+  }
+  
   return (
     
     <>
@@ -155,8 +161,8 @@ export default function Adoption() {
           {/* Search Form */}
           <section className="adoptionSearch__input">
             <InputGroup inside style={styles} size="lg">
-              <Input style={inputStyle} size="lg" onChange={handleChange} placeholder='Search for "city, state" or postal code'/>
-              <InputGroup.Button style={buttonStyle} onClick={handleClick}>
+              <Input style={inputStyle} size="lg" onChange={handleChange} placeholder='Search for "city, state" or postal code' onKeyUp={handleKeyUp}/>
+              <InputGroup.Button id='searchPageButton' style={buttonStyle} onClick={handleClick}>
                 <Icon icon="search" />
               </InputGroup.Button>
             </InputGroup>
