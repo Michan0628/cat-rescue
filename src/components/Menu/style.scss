@@ -1,2 +1,10 @@
 @import "../../style/globleStyle.scss";
 
+
+.noUnderline{
+    text-decoration: none;
+
+}
+.link-active{
+    color:$primary-color;
+}

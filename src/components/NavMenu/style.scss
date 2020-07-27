@@ -37,6 +37,10 @@
         flex-direction: column;
         justify-content: space-between;
         height: 50rem;
+        a{
+            text-decoration: none;
+            color:inherit;
+          }
     }
     &__footer{
         display: flex;

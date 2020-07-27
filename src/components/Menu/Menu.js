@@ -1,13 +1,41 @@
 import React from 'react'
 import './style.scss'
+import {
+    Link,
+    useRouteMatch
+  } from "react-router-dom";
 
+function CustomeLink({ label, to, activeOnlyWhenExact, handleClick }) {
+    let match = useRouteMatch({
+      path: to,
+      exact: activeOnlyWhenExact
+    });
 
-export default function Menu(prop) {
+  
     return (
-        <div className={`menu ${prop.class}`}>
+      <div onClick={handleClick}>
+        <Link to={to} style={{ textDecoration: 'none' }}><h1 className={match ? 'link link-active hvr-bounce-to-right': 'link hvr-bounce-to-right'}>{label}</h1></Link>
+      </div>
+    );
+  }
+
+
+export default function Menu({turnOff}) {
+    return (
+        <div className={`menu`}>
             <div className="menu__nav">
-            <h1>HOME</h1>
-            <h1>ADOPTION</h1>
+            <CustomeLink
+          activeOnlyWhenExact={true}
+          to="/"
+          label="HOME"
+          handleClick={turnOff}
+        />
+        <CustomeLink
+          activeOnlyWhenExact={true}
+          to="/adoption"
+          label="ADOPTION"
+          handleClick={turnOff}
+        />
             <h1>WHY?</h1>
             <h1>OUR STORY</h1>
             <h1>SUPPORT</h1>

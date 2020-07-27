@@ -22,7 +22,7 @@ export default function Card({ cat }) {
         )}
 
         <section className="card__body">
-          <h5 className="card__name">{cat.name}</h5>
+          <h5 className="card__name hvr-bounce-to-right">{cat.name}</h5>
           <div className="card__breed">{cat.breeds.primary}</div>
           <div className="card__location">
             {cat.contact.address.city}, {cat.contact.address.state}

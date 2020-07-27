@@ -3,6 +3,7 @@
 @import 'partials/fonts';
 @import 'partials/mixin';
 @import 'partials/variables';
+@import 'partials/animation';
 
 // reset
 
@@ -63,6 +64,4 @@ h5{
     line-height:2.5rem;
     font-family: $body-font;
   }
-img{
-  // width: 100%;
-}
+
