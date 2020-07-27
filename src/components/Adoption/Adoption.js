@@ -12,7 +12,7 @@ import breed from "../../data/breed.json";
 import color from "../../data/color.json";
 
 const TOKEN =
-  "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIweGpDSkR6M3VIWWRIeWZFbU1uVExiMkhUd1dnSHNjTkxnclhYMGp0NkloUkNSek1obyIsImp0aSI6ImNmNDBjOWJjYWRlZmFhNzdiZjFmNDczODQxMTVlMGM4ZTRiMzIzMWVmYjhkMzVlMTcyMzBkNTA4ODYyMGUwNDAxMWI1ODhiM2FiNWYxZDgyIiwiaWF0IjoxNTk1ODM1NDMzLCJuYmYiOjE1OTU4MzU0MzMsImV4cCI6MTU5NTgzOTAzMywic3ViIjoiIiwic2NvcGVzIjpbXX0.XjsIeqewUnkxeIuaxpb-8nQzDZGHOQpPaekx40XRfLER6bYc5Gqh543VzT2wVqef3y-VDDoapElPri3ljl4sP5Axv0eiZ2Gcrpx_5IfTBBgHkB7f52mfywOzWoaRV-twSWiPhq3fJuUaZRlyWjT44KgnCdJ_oEb4Hfhy4yfpoNKg0oBKrqZj0QGWv6qM64ZrKqaAykO2MF5URiQSfvqRo5YOXNg8AhjYXTh3Bp5C4ysB5ohSd4f3yyZz0NIOo96YKZBPO_Mm91NQiDeZ5C_Zu41YUe2Yb0IpW8nLAQwMnLuhKfYr3BRdmv-39argCuMbP7OCsl-FAORZs9N0at06MQ";
+  "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIweGpDSkR6M3VIWWRIeWZFbU1uVExiMkhUd1dnSHNjTkxnclhYMGp0NkloUkNSek1obyIsImp0aSI6ImRmZmFmZTY3YTAzNTliNTAyZWNkNDhkYzZjMjM0MTdmN2RlM2Q3MWEwMDk4ZjQ5ZWRkMTFjM2M4OTg3NWNlMmExOWRmYTExMWVlZDNmOWQwIiwiaWF0IjoxNTk1ODM4MzY1LCJuYmYiOjE1OTU4MzgzNjUsImV4cCI6MTU5NTg0MTk2NSwic3ViIjoiIiwic2NvcGVzIjpbXX0.K-KD4kLE1QPSibHcAEaXxG1L4NjLUSmeoHS9_YqLD58kls8nqm0g8LxiLFP8liVjIHqtD7ixP-K7GznOQ2NSGHCAuDPawQEqgId1adt6VZxECd0LLrnxi2GLhm1Gno1qMUBAjJulW1r0yWQTuCMVKiDB3jpXiZg1DAIt_MnoQAgXXxeXDRCAcFiWzyLXJysJjAIGvpxbVEnJ_863F8FSbbVsY9gENcSlaOm8TTMyPpIwsnYir-xXjCmeAagMtQwSQpJ-wtaQx4RwsXBRaDmZ-8uOHQgSc4Ey7qN0tjl9uKgvKsJwqKH62SU5c9TEFrniH7jx0dqs2V3WTimqQGGUkA";
 
 // tags data
 const breedTags = breed.map((item) => ({
@@ -31,7 +31,7 @@ const genderTags = [
 ];
 
 const ageTags = [
-  { label: "Kitten", value: "kitten" },
+  { label: "Baby", value: "baby" },
   { label: "Young", value: "young" },
   { label: "Adult", value: "adult" },
   { label: "Senior", value: "senior" },
@@ -193,6 +193,7 @@ export default function Adoption() {
             <section className="adoptionSearch__tagGroup">
               <h5>Breed</h5>
               <TagPicker
+              cleanable={false}
                 size="md"
                 data={breedTags}
                 style={{ width: "100%" }}
@@ -200,6 +201,7 @@ export default function Adoption() {
                 onChange={(value, event) => {
                   if (value !== null) {
                     setBreed(value.join());
+                    setActivePage(1);
                   } else setBreed();
                 }}
                 name="breed"
@@ -214,7 +216,12 @@ export default function Adoption() {
                 placeholder="Any"
                 size="md"
                 onChange={(value, event) => {
-                  setColor(value);
+                  if(value){
+                    setColor(value);
+                  }else{
+                    setColor('')
+                  }
+                  setActivePage(1);
                 }}
               />
             </section>
@@ -223,12 +230,16 @@ export default function Adoption() {
               <h5>Age</h5>
 
               <TagPicker
+              cleanable={false}
                 size="md"
                 data={ageTags}
                 style={{ width: "100%" }}
                 placeholder="Any"
                 onChange={(value, event) => {
-                  setAge(value);
+                  if(value){
+                    setAge(value);
+                  }else{setAge('')}
+                  setActivePage(1);
                 }}
               />
             </section>
@@ -237,12 +248,14 @@ export default function Adoption() {
               <h5>Gender</h5>
 
               <TagPicker
+              cleanable={false}
                 size="md"
                 data={genderTags}
                 style={{ width: "100%" }}
                 placeholder="Any"
                 onChange={(value, event) => {
                   setGender(value);
+                  setActivePage(1);
                 }}
               />
             </section>
@@ -251,25 +264,31 @@ export default function Adoption() {
               <h5>Good with</h5>
 
               <TagPicker
+                cleanable={false}
                 size="md"
                 data={goodTags}
                 style={{ width: "100%" }}
                 placeholder="Any"
                 onChange={(value, event) => {
-                  if (value.indexOf("children") !== -1) {
-                    setGoodWithChildren(true);
-                  } else {
-                    setGoodWithChildren();
-                  }
-                  if (value.indexOf("dogs") !== -1) {
-                    setGoodWithDogs(true);
-                  } else {
-                    setGoodWithDogs();
-                  }
-                  if (value.indexOf("cats") !== -1) {
-                    setGoodWithCats(true);
-                  } else {
-                    setGoodWithCats();
+                  if(value){
+                    if (value.indexOf("children") !== -1) {
+                      setGoodWithChildren(true);
+                      setActivePage(1);
+                    } else {
+                      setGoodWithChildren();
+                    }
+                    if (value.indexOf("dogs") !== -1) {
+                      setGoodWithDogs(true);
+                      setActivePage(1);
+                    } else {
+                      setGoodWithDogs();
+                    }
+                    if (value.indexOf("cats") !== -1) {
+                      setActivePage(1);
+                      setGoodWithCats(true);
+                    } else {
+                      setGoodWithCats();
+                    }
                   }
                 }}
               />
