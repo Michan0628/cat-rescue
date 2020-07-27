@@ -55,6 +55,7 @@
       justify-content: space-between;
       
     }
+    
   }
   &__shelter {
     display: flex;
@@ -149,4 +150,13 @@ a{
 // fix carousel order
 .awssld__wrapper{
   z-index:0;
+}
+// fix tag style
+.rs-tag-group{
+  margin:0;
+  display: flex;
+}
+.rs-tag-group>*{
+  margin-right:2rem;
+  font-family: $body-font;
 }

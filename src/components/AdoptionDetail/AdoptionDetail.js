@@ -10,7 +10,7 @@ import 'react-awesome-slider/src/core/styles.scss';
 
 
 const TOKEN =
-  "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIweGpDSkR6M3VIWWRIeWZFbU1uVExiMkhUd1dnSHNjTkxnclhYMGp0NkloUkNSek1obyIsImp0aSI6Ijg3ODMyMWYxZmVkNWNlZDUwNmFiMGViNDM3ODM3N2NhNWU1NDRjNDAwNjliNjUwZWQzYzYwNDc0MGZiMjc3YzI0YmVlNjIyZThhMDg0NTQ0IiwiaWF0IjoxNTk1ODI2NDk5LCJuYmYiOjE1OTU4MjY0OTksImV4cCI6MTU5NTgzMDA5OSwic3ViIjoiIiwic2NvcGVzIjpbXX0.uBZgDYG1-WvG7c4n9Z5RZDEgJYcgQq9djP-LbiZJ6U2hRwMrldQUj5vfWrfeEaglpRZGiiEAJgX5o-f2cnZZL4xOWmxHvNC-f7oBDDtHzAVw5N7sH2FPrzL3e9M8SlYw4PIkEJygYR6_pRL7jxlad2U9-DOWaMhHjLK3upQAKast84AsHA0yRQncAFckMMu7bSWZXZ7AZOJYEx4ndjx_NJ7G3gkDr9BX4RMD1SwTRz7l21ybcGwE7pxZOjjZxfG66P5L1Lt32xYYznn-ddIj4YOcNjzjNvnwkFUS5MP6xbLsxFpGpV0k77wsO4FVByfqu6mFpBILdpNtyhUgHYTbFQ";
+"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIweGpDSkR6M3VIWWRIeWZFbU1uVExiMkhUd1dnSHNjTkxnclhYMGp0NkloUkNSek1obyIsImp0aSI6ImNmNDBjOWJjYWRlZmFhNzdiZjFmNDczODQxMTVlMGM4ZTRiMzIzMWVmYjhkMzVlMTcyMzBkNTA4ODYyMGUwNDAxMWI1ODhiM2FiNWYxZDgyIiwiaWF0IjoxNTk1ODM1NDMzLCJuYmYiOjE1OTU4MzU0MzMsImV4cCI6MTU5NTgzOTAzMywic3ViIjoiIiwic2NvcGVzIjpbXX0.XjsIeqewUnkxeIuaxpb-8nQzDZGHOQpPaekx40XRfLER6bYc5Gqh543VzT2wVqef3y-VDDoapElPri3ljl4sP5Axv0eiZ2Gcrpx_5IfTBBgHkB7f52mfywOzWoaRV-twSWiPhq3fJuUaZRlyWjT44KgnCdJ_oEb4Hfhy4yfpoNKg0oBKrqZj0QGWv6qM64ZrKqaAykO2MF5URiQSfvqRo5YOXNg8AhjYXTh3Bp5C4ysB5ohSd4f3yyZz0NIOo96YKZBPO_Mm91NQiDeZ5C_Zu41YUe2Yb0IpW8nLAQwMnLuhKfYr3BRdmv-39argCuMbP7OCsl-FAORZs9N0at06MQ";
 
 export default function AdoptionDetail() {
   let { id } = useParams();
@@ -75,7 +75,7 @@ export default function AdoptionDetail() {
       // get recommend cats
       axios
         .get(
-          `https://api.petfinder.com/v2/animals?limit=4&organization=${shelterId}`,
+          `https://api.petfinder.com/v2/animals?type=cat&limit=4&organization=${shelterId}`,
           config
         )
         .then((res) => {
@@ -223,7 +223,7 @@ export default function AdoptionDetail() {
                     </div>
                   </section>
                   <section className="adoptionDetail__tags">
-                    <TagGroup style={{ marginRight: "1rem" }}>
+                    <TagGroup >
                       {/* render TAG */}
                       {data.tags === null ? (
                         <div></div>
