@@ -36,6 +36,7 @@
       font-size: 1.5rem;
     }
     &__learnMore {
+      color:$primary-font-color;
       font-family: $heading-font;
       display: flex;
       justify-content: space-between;

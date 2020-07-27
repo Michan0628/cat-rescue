@@ -9,7 +9,8 @@ export default function Card({ cat }) {
         {/* If there is no photo then show default photo */}
         {photo == null ? (
           <img
-            src="./assets/photo/nathan-riley-_ir1D49PRqM-unsplash.jpg"
+          
+          src={require("../../assets/photo/anton-lochov-_b020HIGZUE-unsplash.jpg")}
             alt="deafult photo blackCat"
             className="card__photo"
           />
@@ -30,7 +31,7 @@ export default function Card({ cat }) {
           <div className="card__learnMore">
             <div>Learn More</div>
             <img
-              src="./assets/arrow.svg"
+ src={require("../../assets/SVG/arrow.svg")}
               alt="blue arrow"
               className="card__learnMoreIcon"
             />

@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import Card from '../Card/Card'
 import "./style.scss";
-import { useParams } from "react-router-dom";
+import { BrowserRouter as Router, Link, useParams } from "react-router-dom";
 import { Tag, TagGroup } from "rsuite";
 
 const TOKEN =
-  "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIweGpDSkR6M3VIWWRIeWZFbU1uVExiMkhUd1dnSHNjTkxnclhYMGp0NkloUkNSek1obyIsImp0aSI6IjU2NGIyODgwZjk3YTJhNTIxMzdjM2Y5OWRkNWY0MGI5OGFlZjQwOGNlZDQ0YTg3MzNlY2M2Y2RjZDk1ODUzZjY2NTA4NmFkNTE4MmI1NGQ4IiwiaWF0IjoxNTk1ODE2MTE1LCJuYmYiOjE1OTU4MTYxMTUsImV4cCI6MTU5NTgxOTcxNSwic3ViIjoiIiwic2NvcGVzIjpbXX0.dr64l_pYIh8J2EFgkOLablO0VSvUq7L2bwBXtZt7h8XMjxYHghoGGSKFdo9Z3LRkfCD44ueKyEphIeydH0pzdeACcDQn19f6iF5KqvAf63FQu25PbnsJnUJcmFaVwC7OKp-W1LcO8uUnB2ypDMBVC6CE495UsqX6fwmjlISOqXA57xq99iCbzyfJdwGaxp6w6T9goqoWAJjTnYnl3W13n9a0xrRMabID3YvW0GA-x-aciAP2bYMSq-fwtAySExy13d-cAO6FA5-IroQU3x1UKM52tqAKTDEvzpqCad98-IMPBT0xlEmQkGLPj6ezQ3oGVIy61WOIeMn6HsWAGtqvrg";
+  "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIweGpDSkR6M3VIWWRIeWZFbU1uVExiMkhUd1dnSHNjTkxnclhYMGp0NkloUkNSek1obyIsImp0aSI6ImZhMmYzMTA2ZGU1MDY5Y2ViYmQ3ZmMzMjM3OWJlZDY0MzE0OTlhNTc3YmQ0YmJmNjc1MjBlNDhkYThhNTY0ZmI1MGIzY2RiZWJhNzZkNjUxIiwiaWF0IjoxNTk1ODIyNzk1LCJuYmYiOjE1OTU4MjI3OTUsImV4cCI6MTU5NTgyNjM5NSwic3ViIjoiIiwic2NvcGVzIjpbXX0.q3K9llLKqfUeCnFpBn1bcgjYH97oDs_PpcEXahwV1qWR81gXt-92cAyF0CvdT49ZTyyyD4Qbf9sHJpqYWV06TahLgHfCOG5mbtcfxhuEzPUbI6jw54erqgKkVyMz2X9KdfKg1LTcMVqS2gano3dAvbDD9IKsyz-I0Siw5ozAMKGgSHd7uUjzP2nV5YsypdJkXD3dyXIxnwSeRv0Kb47mKJYu-I5VDAy0Fv_yy4snqcTA5fPxfoMv_XL1XU82m_LXDzVnzaQv5PtBmQ4l5IwM6X75Y_rr2aW1-HdEhmcCmJlEAFVghmV9Av-G_IFEZLOO09O7fOfEHJ2KJW0gifCVVQ";
 
 export default function AdoptionDetail() {
   let { id } = useParams();
@@ -14,6 +15,7 @@ export default function AdoptionDetail() {
   const [shelterContact, setShelterContact] = useState();
   const [errorMessage, setErrorMessage] = useState();
   const [isLoading, setIsLoading] = useState(true);
+  const [recommend, setRecommend] = useState()
 
   const config = {
     headers: {
@@ -22,6 +24,7 @@ export default function AdoptionDetail() {
     },
   };
   useEffect(() => {
+    // get cat profile 
     axios
       .get(`https://api.petfinder.com/v2/animals/${id}`, config)
       .then((res) => {
@@ -53,6 +56,8 @@ export default function AdoptionDetail() {
           setData([data]);
         }
       });
+
+    // get shelter contact info
     if (shelterId) {
       axios
         .get(`https://api.petfinder.com/v2/organizations/${shelterId}`, config)
@@ -60,8 +65,18 @@ export default function AdoptionDetail() {
           console.log(res.data.organization);
           setShelterContact(res.data.organization);
         });
+        // get recommend cats
+        axios.get(
+          `https://api.petfinder.com/v2/animals?limit=4&organization=${shelterId}`,
+          config
+        ).then((res)=>{
+          setRecommend(res.data.animals);
+        })
     }
-  }, [shelterId]);
+
+  
+    
+  }, [id,  shelterId]);
 
 //   render cat color and breed
   const color = data ? data.colors.primary : "";
@@ -75,7 +90,7 @@ export default function AdoptionDetail() {
     Shelter / Rescue Group
   </h1>
   <h5 className="adoptionDetail__shelter-name">
-    Safehome animal rescue
+    {shelterContact.name}
   </h5>
 
   <section className="adoptionDetail__shelter-contact">
@@ -119,7 +134,35 @@ export default function AdoptionDetail() {
   ):(
       <h5 className='adoptionDetail__isLoading'>Loading...</h5>
   );
+
+  // Render recommen list
+  const renderRecommend = shelterContact && recommend ? (
+    <>
+    <h1 className="recommend__heading">
+      Other Cats from <span className='recommend__highlight hvr-bounce-to-right'>
+        {shelterContact.name}
+        </span>
+    </h1>
+
+    <section className="recommend__list">
+      
+
+        {recommend.map((cat) => (
+        <Link style={{textDecoration:'none'}}key={cat.id} to={`/adoption/${cat.id}`}>
+          <Card cat={cat} />
+        </Link>
+        ))}
+
+      
+    </section>
+      </>
+  ):(
+    <h5 className="recommend__loading">
+      Loading...
+    </h5>
+  )
   return (
+    <>
     <section className="adoptionDetail">
       {/* render cat */}
 
@@ -168,57 +211,11 @@ export default function AdoptionDetail() {
               </div>
             </section>
           </section>
-          {/* profile body                */}
+          {/* profile body  */}
 
           <section className="adoptionDetail__body">
             <section className="adoptionDetail__shelter adoptionDetail__card">
                 {renderContact}
-              {/* <h1 className="adoptionDetail__shelter-heading">
-                Shelter / Rescue Group
-              </h1>
-              <h5 className="adoptionDetail__shelter-name">
-                Safehome animal rescue
-              </h5>
-
-              <section className="adoptionDetail__shelter-contact">
-                <img
-                  src={require("../../assets/SVG/location.svg")}
-                  alt=""
-                  className="adoptionDetail__shelter-icon"
-                />
-                <div className="adoptionDetail__location">
-                  169 Finch ave e, Toronto, ON
-                </div>
-              </section>
-
-              <section className="adoptionDetail__shelter-contact">
-                <img
-                  src={require("../../assets/SVG/location.svg")}
-                  alt=""
-                  className="adoptionDetail__shelter-icon"
-                />
-                <div className="adoptionDetail__location">
-                  http://169rescuecat.com
-                </div>
-              </section>
-              <section className="adoptionDetail__shelter-contact">
-                <img
-                  src={require("../../assets/SVG/Icon-email.svg")}
-                  alt=""
-                  className="adoptionDetail__shelter-icon"
-                />
-                <div className="adoptionDetail__email">rescue@gmail.com</div>
-              </section>
-              <section className="adoptionDetail__shelter-contact">
-                <img
-                  src={require("../../assets/SVG/Icon-phone.svg")}
-                  alt=""
-                  className="adoptionDetail__shelter-icon"
-                />
-                <div className="adoptionDetail__phone">123-456-789</div>
-              </section> */}
-
-
             </section>
             <section className="adoptionDetail__story adoptionDetail__card">
               <h1 className="adoptionDetail__story-heading">My Story</h1>
@@ -230,5 +227,13 @@ export default function AdoptionDetail() {
         </div>
       )}
     </section>
+  
+    <section className="recommend">
+    {renderRecommend}
+    
+     
+      
+    </section>
+    </>
   );
 }

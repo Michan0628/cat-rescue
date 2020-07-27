@@ -12,7 +12,7 @@ import breed from "../../data/breed.json";
 import color from "../../data/color.json";
 
 const TOKEN =
-  "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIweGpDSkR6M3VIWWRIeWZFbU1uVExiMkhUd1dnSHNjTkxnclhYMGp0NkloUkNSek1obyIsImp0aSI6IjU2NGIyODgwZjk3YTJhNTIxMzdjM2Y5OWRkNWY0MGI5OGFlZjQwOGNlZDQ0YTg3MzNlY2M2Y2RjZDk1ODUzZjY2NTA4NmFkNTE4MmI1NGQ4IiwiaWF0IjoxNTk1ODE2MTE1LCJuYmYiOjE1OTU4MTYxMTUsImV4cCI6MTU5NTgxOTcxNSwic3ViIjoiIiwic2NvcGVzIjpbXX0.dr64l_pYIh8J2EFgkOLablO0VSvUq7L2bwBXtZt7h8XMjxYHghoGGSKFdo9Z3LRkfCD44ueKyEphIeydH0pzdeACcDQn19f6iF5KqvAf63FQu25PbnsJnUJcmFaVwC7OKp-W1LcO8uUnB2ypDMBVC6CE495UsqX6fwmjlISOqXA57xq99iCbzyfJdwGaxp6w6T9goqoWAJjTnYnl3W13n9a0xrRMabID3YvW0GA-x-aciAP2bYMSq-fwtAySExy13d-cAO6FA5-IroQU3x1UKM52tqAKTDEvzpqCad98-IMPBT0xlEmQkGLPj6ezQ3oGVIy61WOIeMn6HsWAGtqvrg";
+  "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIweGpDSkR6M3VIWWRIeWZFbU1uVExiMkhUd1dnSHNjTkxnclhYMGp0NkloUkNSek1obyIsImp0aSI6ImZhMmYzMTA2ZGU1MDY5Y2ViYmQ3ZmMzMjM3OWJlZDY0MzE0OTlhNTc3YmQ0YmJmNjc1MjBlNDhkYThhNTY0ZmI1MGIzY2RiZWJhNzZkNjUxIiwiaWF0IjoxNTk1ODIyNzk1LCJuYmYiOjE1OTU4MjI3OTUsImV4cCI6MTU5NTgyNjM5NSwic3ViIjoiIiwic2NvcGVzIjpbXX0.q3K9llLKqfUeCnFpBn1bcgjYH97oDs_PpcEXahwV1qWR81gXt-92cAyF0CvdT49ZTyyyD4Qbf9sHJpqYWV06TahLgHfCOG5mbtcfxhuEzPUbI6jw54erqgKkVyMz2X9KdfKg1LTcMVqS2gano3dAvbDD9IKsyz-I0Siw5ozAMKGgSHd7uUjzP2nV5YsypdJkXD3dyXIxnwSeRv0Kb47mKJYu-I5VDAy0Fv_yy4snqcTA5fPxfoMv_XL1XU82m_LXDzVnzaQv5PtBmQ4l5IwM6X75Y_rr2aW1-HdEhmcCmJlEAFVghmV9Av-G_IFEZLOO09O7fOfEHJ2KJW0gifCVVQ";
 
 // tags data
 const breedTags = breed.map((item) => ({
@@ -312,6 +312,7 @@ export default function Adoption() {
             </div>
           </section>
         </section>
+        
       </div>
     </>
   );
