@@ -1,38 +1,13 @@
-import React, { useState , useEffect} from "react";
-import Nav from '../Nav/Nav';
-import NavMenu from '../NavMenu/NavMenu'
+import React, { useState } from "react";
 import CatSearch from '../CatSearch/CatSearch'
 import "./style.scss";
 import "rsuite/dist/styles/rsuite-default.css";
 
 
-const bodyParameters = {
-  key: "value"
-};
-
-const styles = {
-  width: "70%",
-};
-const buttonStyle = {
-  backgroundColor: "#D775A3",
-  fontFamily:'Roboto',
-  fontWeight:700
-};
-
 
 export default function Home() {
   const [searchTerm, setSearchTerm] = useState("");
 
-  function handleClick(e) {
-    e.preventDefault();
-    console.log("clicked");
-  }
-  function handleChange(value) {
-    setSearchTerm(value);
-  }
-
- 
-  
   return (
     <div className="homePage">
       {/* Navigation bar */}

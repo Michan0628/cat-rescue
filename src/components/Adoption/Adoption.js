@@ -12,7 +12,7 @@ import breed from "../../data/breed.json";
 import color from "../../data/color.json";
 
 const TOKEN =
-  "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIweGpDSkR6M3VIWWRIeWZFbU1uVExiMkhUd1dnSHNjTkxnclhYMGp0NkloUkNSek1obyIsImp0aSI6IjM2YTQ0MTYxNmJlZGI5Y2ZlNDhkNDJmMWNkM2U2MWM3NWUwMTg3NjM1NTlkZDczYjQ3MjQyZTQyZWNlZWI0YjJiZTA3NjllZDVhNmVmNDA0IiwiaWF0IjoxNTk1ODI5MjI5LCJuYmYiOjE1OTU4MjkyMjksImV4cCI6MTU5NTgzMjgyOSwic3ViIjoiIiwic2NvcGVzIjpbXX0.X0Pq7kN-c16C5fdPfv-XubqYQLvCyzpOzbBbaR4FW5h9CtJll-veGzddbkZhhw7aOxvY95LUhcC4qZxOmjrGK6cwLjkxDCRs2FDH0CBWas9vXrZ4makH6oMrK0EXNmvi4VH_6N4OrGZGp9NtoRfj6NUuEqh6U_0rIr-Vt_qniG7hD4Ef7XjwYs4Y8LlduOrCxdXjZi_c451U01GBnVqeNChmcQE8IroIwpatNPWeU1evSPcmgtCRc4_FzI7sLSePknbUthsLjeLA6iqALe-ew-DBb9-W5PWYEf5kBRzXUHbQXMHUitTz2Zic5Ntl5qnRN-h26v1fnF5_dkkBHf9O-Q";
+  "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIweGpDSkR6M3VIWWRIeWZFbU1uVExiMkhUd1dnSHNjTkxnclhYMGp0NkloUkNSek1obyIsImp0aSI6ImNmNDBjOWJjYWRlZmFhNzdiZjFmNDczODQxMTVlMGM4ZTRiMzIzMWVmYjhkMzVlMTcyMzBkNTA4ODYyMGUwNDAxMWI1ODhiM2FiNWYxZDgyIiwiaWF0IjoxNTk1ODM1NDMzLCJuYmYiOjE1OTU4MzU0MzMsImV4cCI6MTU5NTgzOTAzMywic3ViIjoiIiwic2NvcGVzIjpbXX0.XjsIeqewUnkxeIuaxpb-8nQzDZGHOQpPaekx40XRfLER6bYc5Gqh543VzT2wVqef3y-VDDoapElPri3ljl4sP5Axv0eiZ2Gcrpx_5IfTBBgHkB7f52mfywOzWoaRV-twSWiPhq3fJuUaZRlyWjT44KgnCdJ_oEb4Hfhy4yfpoNKg0oBKrqZj0QGWv6qM64ZrKqaAykO2MF5URiQSfvqRo5YOXNg8AhjYXTh3Bp5C4ysB5ohSd4f3yyZz0NIOo96YKZBPO_Mm91NQiDeZ5C_Zu41YUe2Yb0IpW8nLAQwMnLuhKfYr3BRdmv-39argCuMbP7OCsl-FAORZs9N0at06MQ";
 
 // tags data
 const breedTags = breed.map((item) => ({
@@ -69,8 +69,8 @@ export default function Adoption() {
   const homePageSearchTerm = location.state ? (location.state.searchTerm.homePageSearchTerm):(undefined);
   const [activePage, setActivePage] = useState(1);
   const [totalPage, setTotalPage] = useState();
-  const [result, setResult] = useState([]);
-  const [searchTerm, setSearchTerm] = useState(homePageSearchTerm?(homePageSearchTerm):('toronto, on'));
+  const [result, setResult] = useState([])
+  const [searchTerm, setSearchTerm] = useState(homePageSearchTerm?(homePageSearchTerm):(sessionStorage.getItem('sessionStorageResult')|| 'toronto, on'));
   const [isLoading, setIsLoading] = useState(false);
   const [totalCount, setTotalCount] = useState();
   const [locationQuery, setLocationQuery] = useState();
@@ -91,6 +91,9 @@ export default function Adoption() {
     const goodDogsQuery = goodWithDogs === true ? "&good_with_dogs=true" : "";
     const goodChildrenQuery =
       goodWithChildren === true ? "&good_with_children=true" : "";
+    // session storage
+
+    sessionStorage.setItem('sessionStorageResult', searchTerm);
 
     axios
       .get(

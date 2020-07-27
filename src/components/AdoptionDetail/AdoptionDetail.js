@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router, Link, useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import "./style.scss";
 import axios from "axios";
 import Card from "../Card/Card";
-import { Tag, TagGroup, DateRangePicker } from "rsuite";
+import { Tag, TagGroup } from "rsuite";
 // photo carousel
 import AwesomeSlider from "react-awesome-slider";
-// import "react-awesome-slider/dist/styles.css";
 import 'react-awesome-slider/src/core/styles.scss';
+
+
 const TOKEN =
   "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIweGpDSkR6M3VIWWRIeWZFbU1uVExiMkhUd1dnSHNjTkxnclhYMGp0NkloUkNSek1obyIsImp0aSI6Ijg3ODMyMWYxZmVkNWNlZDUwNmFiMGViNDM3ODM3N2NhNWU1NDRjNDAwNjliNjUwZWQzYzYwNDc0MGZiMjc3YzI0YmVlNjIyZThhMDg0NTQ0IiwiaWF0IjoxNTk1ODI2NDk5LCJuYmYiOjE1OTU4MjY0OTksImV4cCI6MTU5NTgzMDA5OSwic3ViIjoiIiwic2NvcGVzIjpbXX0.uBZgDYG1-WvG7c4n9Z5RZDEgJYcgQq9djP-LbiZJ6U2hRwMrldQUj5vfWrfeEaglpRZGiiEAJgX5o-f2cnZZL4xOWmxHvNC-f7oBDDtHzAVw5N7sH2FPrzL3e9M8SlYw4PIkEJygYR6_pRL7jxlad2U9-DOWaMhHjLK3upQAKast84AsHA0yRQncAFckMMu7bSWZXZ7AZOJYEx4ndjx_NJ7G3gkDr9BX4RMD1SwTRz7l21ybcGwE7pxZOjjZxfG66P5L1Lt32xYYznn-ddIj4YOcNjzjNvnwkFUS5MP6xbLsxFpGpV0k77wsO4FVByfqu6mFpBILdpNtyhUgHYTbFQ";
 
@@ -26,6 +27,8 @@ export default function AdoptionDetail() {
       Authorization: `Bearer ${TOKEN}`,
     },
   };
+
+  
   useEffect(() => {
     // get cat profile
     axios
@@ -56,6 +59,7 @@ export default function AdoptionDetail() {
           } else {
             setErrorMessage("Token expired");
           }
+          console.log(errorMessage)
           setData([data]);
         }
       });

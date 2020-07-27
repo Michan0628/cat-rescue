@@ -34,10 +34,22 @@ export default function Footer() {
 
                 <img src={require("../../assets/SVG/logo.svg")} alt="blue logo of cat home" className='footer__logo'/>
             <div className="footer__share">
+
+                <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" className="twitter-share-button" data-url="https://dora-he-cat-rescue.com" data-lang="en" data-show-count="false">
+                <img src={require("../../assets/SVG/twitter.svg")} alt="The share button for twitter" className="footer__twitter"/>
+                </a>
+
+                <a href="https://www.facebook.com/sharer/sharer.php?u=http://dora-he-cat-rescue.com" target="_blank" rel="noopener noreferrer" >
                 <img src={require("../../assets/SVG/facebook.svg")} alt="The share button for facebook" className="footer__facebook"/>
-                <img src={require("../../assets/SVG/twitter.svg")} alt="The share button for twitter" className="footer__instagram"/>
-                <img src={require("../../assets/SVG/instagram.svg")} alt="The share button for instagram" className="footer__facebook"/>
+                </a>
+
+                <a href='https://instagram.com/petfinder?igshid=z4t7q86mfrix'>
+                <img src={require("../../assets/SVG/instagram.svg")} alt="The share button for instagram" className="footer__instagram"/>
+                </a>
+                
+                <a href='https://www.behance.net/duojiaohe'>
                 <img src={require("../../assets/SVG/behance.svg")} alt="The share button for behance" className="footer__behance"/>
+                </a>
             </div>
             </div>
             {/* <div className="footer__nav-wrapper">

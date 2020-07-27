@@ -11,7 +11,7 @@ export default function Card({ cat }) {
           <img
           
           src={require("../../assets/photo/anton-lochov-_b020HIGZUE-unsplash.jpg")}
-            alt="deafult photo blackCat"
+            alt="deafult blackCat"
             className="card__photo"
           />
         ) : (
