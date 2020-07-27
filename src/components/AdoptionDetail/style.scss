@@ -3,16 +3,18 @@
 .adoptionDetail {
   &__greeting{
     color:$primary-color;
+    margin-bottom: 1rem;
+
   }
 
   &__hero {
     @include desktop-padding;
     background-color: white;
-    height: 52vh;
+    height: 60vh;
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
-    padding-top:8rem;
+    padding-top:12rem;
     &-left {
       height: 100%;
       width: 50%;
@@ -27,6 +29,11 @@
       height: 100%;
       width: 48%;
     }
+  }
+  &__name{
+    color:$primary-color;
+    width: 35%;
+    margin-bottom: 1rem;
   }
   &__body {
     @include desktop-padding;
@@ -97,17 +104,27 @@
   }
   
   &__info > *{
-    margin-bottom: 1rem;
-    font-size:1.8rem;
-    font-family: $body-font;
+
+    margin-bottom: 2rem;
+    font-size:2.2rem;
+    font-family: $heading-font;
     color:$primary-font-color;
   }
 }
 
 .slider {
-  height: 200px;
-  width: 400px;
-  background-color: darkslateblue;
+  height: 300px;
+  width: 500px;
+
+  &__photo{
+    width: 100%;
+
+    img{
+      width: 100%;
+    object-fit: cover;
+      
+    }
+  }
 }
 
 a{
