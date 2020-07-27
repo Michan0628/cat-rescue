@@ -32,7 +32,6 @@
   }
   &__name{
     color:$primary-color;
-    width: 35%;
     margin-bottom: 1rem;
   }
   &__body {
@@ -134,12 +133,20 @@ a{
 
   background-color: $secondary-background-color;
   @include desktop-padding;
+  &__heading{
+    padding-top: 4rem;
+    margin-bottom: 4rem;
+  }
   &__highlight{
     color:$primary-color;
   }
   &__list{
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
 
   }
+}
+// fix carousel order
+.awssld__wrapper{
+  z-index:0;
 }

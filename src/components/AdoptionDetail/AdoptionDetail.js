@@ -6,8 +6,8 @@ import Card from "../Card/Card";
 import { Tag, TagGroup, DateRangePicker } from "rsuite";
 // photo carousel
 import AwesomeSlider from "react-awesome-slider";
-import "react-awesome-slider/dist/styles.css";
-
+// import "react-awesome-slider/dist/styles.css";
+import 'react-awesome-slider/src/core/styles.scss';
 const TOKEN =
   "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIweGpDSkR6M3VIWWRIeWZFbU1uVExiMkhUd1dnSHNjTkxnclhYMGp0NkloUkNSek1obyIsImp0aSI6Ijg3ODMyMWYxZmVkNWNlZDUwNmFiMGViNDM3ODM3N2NhNWU1NDRjNDAwNjliNjUwZWQzYzYwNDc0MGZiMjc3YzI0YmVlNjIyZThhMDg0NTQ0IiwiaWF0IjoxNTk1ODI2NDk5LCJuYmYiOjE1OTU4MjY0OTksImV4cCI6MTU5NTgzMDA5OSwic3ViIjoiIiwic2NvcGVzIjpbXX0.uBZgDYG1-WvG7c4n9Z5RZDEgJYcgQq9djP-LbiZJ6U2hRwMrldQUj5vfWrfeEaglpRZGiiEAJgX5o-f2cnZZL4xOWmxHvNC-f7oBDDtHzAVw5N7sH2FPrzL3e9M8SlYw4PIkEJygYR6_pRL7jxlad2U9-DOWaMhHjLK3upQAKast84AsHA0yRQncAFckMMu7bSWZXZ7AZOJYEx4ndjx_NJ7G3gkDr9BX4RMD1SwTRz7l21ybcGwE7pxZOjjZxfG66P5L1Lt32xYYznn-ddIj4YOcNjzjNvnwkFUS5MP6xbLsxFpGpV0k77wsO4FVByfqu6mFpBILdpNtyhUgHYTbFQ";
 
@@ -90,7 +90,11 @@ export default function AdoptionDetail() {
       <h1 className="adoptionDetail__shelter-heading">
         Shelter / Rescue Group
       </h1>
-      <h5 className="adoptionDetail__shelter-name">{shelterContact.name}</h5>
+      <h5 className="adoptionDetail__shelter-name">
+        <span className='hvr-bounce-to-right'>
+        {shelterContact.name}
+        </span>
+        </h5>
 
       <section className="adoptionDetail__shelter-contact">
         <img
@@ -203,7 +207,8 @@ export default function AdoptionDetail() {
               <section className="adoptionDetail__hero-right">
                 <div className="adoptionDetail__card adoptionDetail__card-greeting">
                   <h5 className="adoptionDetail__greeting">Hi! I'm</h5>
-                  <h1 className="adoptionDetail__name hvr-bounce-to-right">{data.name}</h1>
+                  <h1 className="adoptionDetail__name">
+                    <span className='hvr-bounce-to-right' >{data.name}</span> </h1>
                   <section className="adoptionDetail__info">
                     <div>
                       {color}- {data.gender} - {data.age} - {data.status}
