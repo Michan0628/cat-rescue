@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+import {Link} from "react-router-dom";
 import { Button } from "rsuite";
 import { Input } from "rsuite";
 import "rsuite/dist/styles/rsuite-default.css";
@@ -12,29 +13,39 @@ const buttonStyle = {
   fontWeight: 700,
 };
 
-export default function CatSearch({ searchText }) {
-  const [text, setText] = useState("");
-  const handleClick = (e) => {
-    e.preventDefault();
-    searchText(text);
-  };
+export default function CatSearch({ searchText, homePageSearchTerm}) {
 
+const handleKeyUp=(e)=>{
+  if(e.key==='Enter'){
+    document.getElementById('homeSearchButton').click()
+  }
+}
+const handleChange = (value)=>{
+  searchText(value)
+}
   return (
     <section className="hero__search search">
       <Input
         className="search__input"
         style={styles}
-        placeholder="Try 'Toronto'"
-        onChange={(value) => setText(value)}
+        placeholder="Try 'Toronto, ON'"
+        onChange={handleChange}
+        onKeyUp={handleKeyUp}
+
       />
+      <Link to={{
+        pathname:'/adoption',
+        state:{searchTerm: {homePageSearchTerm}}
+      }}>
       <Button
+      id='homeSearchButton'
         className="search__button"
         style={buttonStyle}
         appearance="primary"
-        onClick={handleClick}
-      >
+        >
         Get Started
       </Button>
+        </Link>
     </section>
   );
 }

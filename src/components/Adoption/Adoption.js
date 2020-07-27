@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import Card from "../Card/Card";
 import axios from "axios";
 import "./style.scss";
@@ -12,7 +12,7 @@ import breed from "../../data/breed.json";
 import color from "../../data/color.json";
 
 const TOKEN =
-  "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIweGpDSkR6M3VIWWRIeWZFbU1uVExiMkhUd1dnSHNjTkxnclhYMGp0NkloUkNSek1obyIsImp0aSI6ImUzODdlY2QyM2QyYjJlNzExNzgwNWEwZmRiYjdkNjIwMTVhYTEyMWVhMzYyYzY5YjlhNDVmNjY3YjFkYjJkYzJmMmRiOGFjNjUwYjhiMTBmIiwiaWF0IjoxNTk1ODA3ODkzLCJuYmYiOjE1OTU4MDc4OTMsImV4cCI6MTU5NTgxMTQ5Mywic3ViIjoiIiwic2NvcGVzIjpbXX0.jg8Y6yhZDZBWFs-ufFF1OfqPlv4cF-c7Lvg7ZdKpIO64LFqo7c908_RECOQZySXHf4BrTWW23v8OmiBDovhKeajE1DyDkHAeroUheoXU_yjsx3KyMjcIag3krtrnwrE_mfA1iIXoxkLHnkuy5Nj3gzK7BbGrlGI6GOHW5UNtliUpRHXmxyWeHZyQcZ8BCRWpKwLw0WJY7x1CZT8QFTXevIhdAkyYKKdpflhr6N3KVKR5Nd8mjHM9SECGNfhlE55gjukCLQZ7aTK_9Zvgc1iwoJGTsrV_PlHVzluFxJNV1EqdmSPiC4RCq3QcAiN0E0v3KBuDM84jF5VjuHiAxNGLcw";
+  "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIweGpDSkR6M3VIWWRIeWZFbU1uVExiMkhUd1dnSHNjTkxnclhYMGp0NkloUkNSek1obyIsImp0aSI6IjU2NGIyODgwZjk3YTJhNTIxMzdjM2Y5OWRkNWY0MGI5OGFlZjQwOGNlZDQ0YTg3MzNlY2M2Y2RjZDk1ODUzZjY2NTA4NmFkNTE4MmI1NGQ4IiwiaWF0IjoxNTk1ODE2MTE1LCJuYmYiOjE1OTU4MTYxMTUsImV4cCI6MTU5NTgxOTcxNSwic3ViIjoiIiwic2NvcGVzIjpbXX0.dr64l_pYIh8J2EFgkOLablO0VSvUq7L2bwBXtZt7h8XMjxYHghoGGSKFdo9Z3LRkfCD44ueKyEphIeydH0pzdeACcDQn19f6iF5KqvAf63FQu25PbnsJnUJcmFaVwC7OKp-W1LcO8uUnB2ypDMBVC6CE495UsqX6fwmjlISOqXA57xq99iCbzyfJdwGaxp6w6T9goqoWAJjTnYnl3W13n9a0xrRMabID3YvW0GA-x-aciAP2bYMSq-fwtAySExy13d-cAO6FA5-IroQU3x1UKM52tqAKTDEvzpqCad98-IMPBT0xlEmQkGLPj6ezQ3oGVIy61WOIeMn6HsWAGtqvrg";
 
 // tags data
 const breedTags = breed.map((item) => ({
@@ -63,11 +63,14 @@ const buttonStyle = {
   height: "100%",
 };
 
+
 export default function Adoption() {
+  const location = useLocation();
+  const homePageSearchTerm = location.state ? (location.state.searchTerm.homePageSearchTerm):(undefined);
   const [activePage, setActivePage] = useState(1);
   const [totalPage, setTotalPage] = useState();
   const [result, setResult] = useState([]);
-  const [searchTerm, setSearchTerm] = useState("toronto, on");
+  const [searchTerm, setSearchTerm] = useState(homePageSearchTerm?(homePageSearchTerm):('toronto, on'));
   const [isLoading, setIsLoading] = useState(false);
   const [totalCount, setTotalCount] = useState();
   const [locationQuery, setLocationQuery] = useState();
@@ -80,18 +83,21 @@ export default function Adoption() {
   const [goodWithDogs, setGoodWithDogs] = useState();
   const [goodWithCats, setGoodWithCats] = useState();
 
+
+
   useEffect(() => {
+    
     const goodCatsQuery = goodWithCats === true ? "&good_with_cats=true" : "";
     const goodDogsQuery = goodWithDogs === true ? "&good_with_dogs=true" : "";
     const goodChildrenQuery =
       goodWithChildren === true ? "&good_with_children=true" : "";
+
     axios
       .get(
         `https://api.petfinder.com/v2/animals?type=cat&sort=distance&limit=21&page=${activePage}&location=${searchTerm}&breed=${breed}&gender=${gender}&color=${color}&age=${age}${goodCatsQuery}${goodDogsQuery}${goodChildrenQuery}`,
         config
       )
       .then((res) => {
-        console.log(res.data.animals);
         setTotalCount(res.data.pagination.total_count);
         setResult(res.data.animals);
         setTotalPage(res.data.pagination.total_pages);
@@ -133,12 +139,14 @@ export default function Adoption() {
   };
 
   return (
+    
     <>
       <div className="adoptionSearch">
         <div className="adoptionSearch__hero">
           <section className="adoptionSearch__heading">
             <h1 className="adoptionSearch__heading-main">
               We're here for them
+
             </h1>
             <h2 className="adoptionSearch__heading-second">
               They're always there for you

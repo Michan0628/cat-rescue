@@ -21,9 +21,7 @@ const buttonStyle = {
 
 
 export default function Home() {
-  const [reasult, setResult] = useState([])
   const [searchTerm, setSearchTerm] = useState("");
-  const [isLoading, setIsLoading] = useState(true);
 
   function handleClick(e) {
     e.preventDefault();
@@ -48,7 +46,7 @@ export default function Home() {
 
           {/* search */}
           
-             <CatSearch searchText={(text) => setSearchTerm(text)} />
+             <CatSearch searchText={(text) => setSearchTerm(text)} homePageSearchTerm={searchTerm}/>
 
           {/* subheading */}
           <section className="hero__subheading">

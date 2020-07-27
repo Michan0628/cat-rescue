@@ -16,7 +16,7 @@ export default function NavMenu() {
   return (
     <div className='navMenu'>
  <Link to={`/`}>
-        <img src={require("../../assets/SVG/logo.svg")} alt="the blue logo of cat home" className="navMenu__logo"/>
+        <img src={require("../../assets/SVG/logo.svg")} alt="the blue logo of cat home" className="navMenu__logo" onClick={turnOffMenu}/>
 
                 </Link>
         <div className="burgerIcon">
