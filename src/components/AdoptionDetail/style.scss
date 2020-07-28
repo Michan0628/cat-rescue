@@ -147,7 +147,21 @@ a{
 
   }
 }
-// style for 
+// style for loading
+
+.loading{
+  &__profile, &__shelter, &__recommend{
+    height:40vh;
+    display: grid;
+    place-items:center;
+  }
+  &__shlter{
+    height:30vh;
+  }
+  &__recommend{
+    height:20vh;
+  }
+}
 // fix carousel order
 .awssld__wrapper{
   z-index:0;
