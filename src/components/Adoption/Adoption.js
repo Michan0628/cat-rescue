@@ -12,6 +12,7 @@ import { TagPicker } from "rsuite";
 import breed from "../../data/breed.json";
 import color from "../../data/color.json";
 
+
 const TOKEN =
   "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJGaHluMzBBMkk0d1h0aWtvZWdtOThlbzVaUEpKZFBpMUVmMXppV01sc3VrUjMwMlJVTSIsImp0aSI6IjU3MjczYWI3YjIwNmJiZGY1NWQwZGQ4NmU2MGU2ZGVlYjgxNjljMzNkZDdjYWQ5NzRhNjYwODhhY2U5MTJiNGVkNmM3MWM5YjA5ZDM1M2EzIiwiaWF0IjoxNTk1OTEwNDc5LCJuYmYiOjE1OTU5MTA0NzksImV4cCI6MTU5NTkxNDA3OSwic3ViIjoiIiwic2NvcGVzIjpbXX0.g0gy893aPfFj-fZkW_YD3Ois2WjC-UnNfg_G0OXQ1-tkIWDpRBu1cXhicSrUcUr_R8dtjYd7pWJ4i8cTR8w2ye60CdJ-G7Yi5ygyssm1-IOK1dyjbMeHjpB92OgNq_Dh3dfCVIzfumiBhlhuoFeDMij4nu86UGyUvsHXoTC1SYqVRkWEd5Mb58z6tvtswNENn9MNwaPUbPDPwNAUddN1WrI24AvWwT_0EtQD9iLpmM81hsQuEdZwkO_0GwOeqrBfAmryL2mvhyopBzFX4uT7gtL16aBMSzRvMbCZEcoRd-Bp5FrHWTSUucGPbXKolikx-OZa9iYi9INmZrBVZfpaC";
 
@@ -154,6 +155,8 @@ export default function Adoption() {
     <>
       <div className="adoptionSearch">
         <div className="adoptionSearch__hero">
+
+          <Fade cascade duration={1200}>
           <section className="adoptionSearch__heading">
             <h1 className="adoptionSearch__heading-main">
               We're here for them
@@ -187,6 +190,8 @@ export default function Adoption() {
               </h2>
             )}
           </div>
+
+          </Fade>
         </div>
         {/* Search Result */}
         <section className="adoptionSearch__body">

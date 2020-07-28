@@ -4,11 +4,12 @@
     background-color: $secondary-background-color;
     @include desktop-padding;
     &__hero{
-        padding-top:20rem;
-        height:40vh;
+        padding-top:28rem;
+        height:100vh;
         display: flex;
         flex-direction: column;
         justify-content: center;
+        margin-bottom: 8rem;
         &>*{
             margin-bottom:4rem;
         }
@@ -23,20 +24,24 @@
         font-size: 2.5rem;
     }
     &__img{
-        padding:4rem 0;
+        padding:6rem 0 10rem 0;
     }
 
     &__footer{
         padding:10rem 0;
         color: $secondary-color;
+        &-highlight{
+            color:$primary-color;
+            text-transform: uppercase;
+        }
     }
 }
 .questionCard{
     background-color: white;
     display: flex;
     justify-content: space-between;
-    margin-bottom: 4rem;
-    padding: 4rem;
+    margin-bottom: 8rem;
+    padding: 4rem 4rem 6rem;
 
     &__number{
         width: 20%;
