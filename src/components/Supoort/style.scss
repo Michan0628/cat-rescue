@@ -1,0 +1,60 @@
+@import '../../style/globleStyle.scss';
+
+.volunteer{
+    background-color: $secondary-background-color;
+    @include desktop-padding;
+    &__hero{
+        padding-top:20rem;
+        height:40vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        &>*{
+            margin-bottom:4rem;
+        }
+    }
+    &__heading{
+        color:$primary-color;
+        text-transform: uppercase;
+    }
+    &__subheading{
+        color:$primary-font-color;
+        font-weight: 500;
+        font-size: 2.5rem;
+    }
+    &__img{
+        padding:4rem 0;
+    }
+
+    &__footer{
+        padding:10rem 0;
+        color: $secondary-color;
+    }
+}
+.questionCard{
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 4rem;
+    padding: 4rem;
+
+    &__number{
+        width: 20%;
+        color:$primary-color;
+        font: 700 5rem $heading-font;
+    }
+    &__body{
+        width: 80%;
+    }
+    &__question{
+        font:700 2.6rem/5.2rem $heading-font;
+        color: $primary-color;
+        color:$primary-font-color;
+        margin-bottom: 2rem;
+    }
+    &__answer{
+        color:$primary-font-color;
+        font:400 2.2rem/4.4rem $body-font;
+    }
+
+}

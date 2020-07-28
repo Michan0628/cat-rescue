@@ -36,10 +36,15 @@ export default function Menu({turnOff}) {
           label="ADOPTION"
           handleClick={turnOff}
         />
-            <h1>WHY?</h1>
-            <h1>OUR STORY</h1>
-            <h1>SUPPORT</h1>
-            </div>
+    
+         <CustomeLink
+          activeOnlyWhenExact={true}
+          to="/support"
+          label="SUPPORT"
+          handleClick={turnOff}
+        />
+        </div>
+
             <div className="menu__footer">
                 <img src={require('../../assets/SVG/black_cat.svg')} alt="this is a black cat" className="menu__cat"/>
 

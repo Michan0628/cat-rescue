@@ -24,7 +24,7 @@ function App() {
             <Adoption />
           </Route>
 
-          <Route path="/supoort">
+          <Route path="/support">
             <Support />
           </Route>
 
