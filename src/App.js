@@ -4,6 +4,7 @@ import Home from "./components/Home/Home";
 import Adoption from "./components/Adoption/Adoption";
 import AdoptionDetail from "./components/AdoptionDetail/AdoptionDetail";
 import NavMenu from "./components/NavMenu/NavMenu";
+import Support from './components/Supoort/Supoort'
 
 import { BrowserRouter as Router, Switch, Route} from "react-router-dom";
 import "./App.scss";
@@ -21,6 +22,10 @@ function App() {
 
           <Route path="/adoption">
             <Adoption />
+          </Route>
+
+          <Route path="/supoort">
+            <Support />
           </Route>
 
           <Route path="/">

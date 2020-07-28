@@ -154,12 +154,32 @@ a{
     height:40vh;
     display: grid;
     place-items:center;
+    position: relative;
+
+  }
+  &__profile{
+    .rs-icon-spinner{
+
+      display: inline;
+      position: absolute;
+        top: 17rem;
+        right: 72rem;
+    
+    }
   }
   &__shlter{
     height:30vh;
   }
   &__recommend{
     height:20vh;
+    .rs-icon-spinner{
+
+      display: inline;
+      position: absolute;
+        top: 8rem;
+        right: 60rem;
+    
+    }
   }
 }
 // fix carousel order
@@ -175,3 +195,4 @@ a{
   margin-right:2rem;
   font-family: $body-font;
 }
+

@@ -1,16 +1,17 @@
 import React, { useState, useEffect } from "react";
+import { Icon, Tag, TagGroup } from "rsuite";
 import { Link, useParams } from "react-router-dom";
 import "./style.scss";
 import axios from "axios";
 import Card from "../Card/Card";
-import { Tag, TagGroup } from "rsuite";
 // photo carousel
 import AwesomeSlider from "react-awesome-slider";
-import 'react-awesome-slider/src/core/styles.scss';
-
+import "react-awesome-slider/src/core/styles.scss";
+import Bounce from "react-reveal/Bounce";
+import Fade from 'react-reveal/Fade';
 
 const TOKEN =
-"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIweGpDSkR6M3VIWWRIeWZFbU1uVExiMkhUd1dnSHNjTkxnclhYMGp0NkloUkNSek1obyIsImp0aSI6ImNmNDBjOWJjYWRlZmFhNzdiZjFmNDczODQxMTVlMGM4ZTRiMzIzMWVmYjhkMzVlMTcyMzBkNTA4ODYyMGUwNDAxMWI1ODhiM2FiNWYxZDgyIiwiaWF0IjoxNTk1ODM1NDMzLCJuYmYiOjE1OTU4MzU0MzMsImV4cCI6MTU5NTgzOTAzMywic3ViIjoiIiwic2NvcGVzIjpbXX0.XjsIeqewUnkxeIuaxpb-8nQzDZGHOQpPaekx40XRfLER6bYc5Gqh543VzT2wVqef3y-VDDoapElPri3ljl4sP5Axv0eiZ2Gcrpx_5IfTBBgHkB7f52mfywOzWoaRV-twSWiPhq3fJuUaZRlyWjT44KgnCdJ_oEb4Hfhy4yfpoNKg0oBKrqZj0QGWv6qM64ZrKqaAykO2MF5URiQSfvqRo5YOXNg8AhjYXTh3Bp5C4ysB5ohSd4f3yyZz0NIOo96YKZBPO_Mm91NQiDeZ5C_Zu41YUe2Yb0IpW8nLAQwMnLuhKfYr3BRdmv-39argCuMbP7OCsl-FAORZs9N0at06MQ";
+  "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJGaHluMzBBMkk0d1h0aWtvZWdtOThlbzVaUEpKZFBpMUVmMXppV01sc3VrUjMwMlJVTSIsImp0aSI6IjU3MjczYWI3YjIwNmJiZGY1NWQwZGQ4NmU2MGU2ZGVlYjgxNjljMzNkZDdjYWQ5NzRhNjYwODhhY2U5MTJiNGVkNmM3MWM5YjA5ZDM1M2EzIiwiaWF0IjoxNTk1OTEwNDc5LCJuYmYiOjE1OTU5MTA0NzksImV4cCI6MTU5NTkxNDA3OSwic3ViIjoiIiwic2NvcGVzIjpbXX0.g0gy893aPfFj-fZkW_YD3Ois2WjC-UnNfg_G0OXQ1-tkIWDpRBu1cXhicSrUcUr_R8dtjYd7pWJ4i8cTR8w2ye60CdJ-G7Yi5ygyssm1-IOK1dyjbMeHjpB92OgNq_Dh3dfCVIzfumiBhlhuoFeDMij4nu86UGyUvsHXoTC1SYqVRkWEd5Mb58z6tvtswNENn9MNwaPUbPDPwNAUddN1WrI24AvWwT_0EtQD9iLpmM81hsQuEdZwkO_0GwOeqrBfAmryL2mvhyopBzFX4uT7gtL16aBMSzRvMbCZEcoRd-Bp5FrHWTSUucGPbXKolikx-OZa9iYi9INmZrBVZfpaC";
 
 export default function AdoptionDetail() {
   let { id } = useParams();
@@ -28,7 +29,6 @@ export default function AdoptionDetail() {
     },
   };
 
-  
   useEffect(() => {
     // get cat profile
     axios
@@ -59,7 +59,7 @@ export default function AdoptionDetail() {
           } else {
             setErrorMessage("Token expired");
           }
-          console.log(errorMessage)
+          console.log(errorMessage);
           setData([data]);
         }
       });
@@ -90,15 +90,14 @@ export default function AdoptionDetail() {
 
   // Render shelter contact card
   const renderContact = shelterContact ? (
+    <Fade duration={1500}>
     <>
       <h1 className="adoptionDetail__shelter-heading">
         Shelter / Rescue Group
       </h1>
       <h5 className="adoptionDetail__shelter-name">
-        <span className='hvr-bounce-to-right'>
-        {shelterContact.name}
-        </span>
-        </h5>
+        <span className="hvr-bounce-to-right">{shelterContact.name}</span>
+      </h5>
 
       <section className="adoptionDetail__shelter-contact">
         <img
@@ -150,6 +149,7 @@ export default function AdoptionDetail() {
         <div className="adoptionDetail__phone">{shelterContact.phone}</div>
       </section>
     </>
+    </Fade>
   ) : (
     <h5 className="adoptionDetail__isLoading loading__shelter">Loading...</h5>
   );
@@ -165,20 +165,24 @@ export default function AdoptionDetail() {
           </span>
         </h1>
 
-        <section className="recommend__list">
-          {recommend.map((cat) => (
-            <Link
-              style={{ textDecoration: "none" }}
-              key={cat.id}
-              to={`/adoption/${cat.id}`}
-            >
-              <Card cat={cat} />
-            </Link>
-          ))}
-        </section>
+        <Bounce right cascade>
+          <section className="recommend__list">
+            {recommend.map((cat) => (
+              <Link
+                style={{ textDecoration: "none" }}
+                key={cat.id}
+                to={`/adoption/${cat.id}`}
+              >
+                <Card cat={cat} />
+              </Link>
+            ))}
+          </section>
+        </Bounce>
       </>
     ) : (
-      <h5 className="recommend__loading loading__recommend">Loading...</h5>
+      <h5 className="recommend__loading loading__recommend">
+        <Icon icon="spinner" spin /> Loading...
+      </h5>
     );
   return (
     <>
@@ -186,44 +190,57 @@ export default function AdoptionDetail() {
         {/* render cat */}
 
         {isLoading ? (
-          <h1 className='loading__profile'>Loading...</h1>
+          <div className="loading__profile">
+            <h1>
+              <Icon icon="spinner" spin />
+              Loading...
+            </h1>
+          </div>
         ) : (
           <div className="adoptionDetail__container">
             <section className="adoptionDetail__hero">
-
               {/* HERO LEFT */}
               <section className="adoptionDetail__hero-left">
+
+
                 {/* slider */}
-
-
+              <Fade duration={1500}>
                 <div className="slider">
                   <AwesomeSlider>
-                    {data.photos.map((item, index)=>(
-                      <div className='slider__photo' key={index}>
-                        <img  src={item.large} alt=""/>
+                    {data.photos.map((item, index) => (
+                      <div className="slider__photo" key={index}>
+                        <img src={item.large} alt="" />
                       </div>
                     ))}
                   </AwesomeSlider>
                 </div>
+                </Fade>
               </section>
 
               {/* HERO RIGHT */}
               <section className="adoptionDetail__hero-right">
                 <div className="adoptionDetail__card adoptionDetail__card-greeting">
                   <h5 className="adoptionDetail__greeting">Hi! I'm</h5>
+                  <Bounce right>
                   <h1 className="adoptionDetail__name">
-                    <span className='hvr-bounce-to-right' >{data.name}</span> </h1>
-                  <section className="adoptionDetail__info">
-                    <div>
-                      {color}- {data.gender} - {data.age} - {data.status}
-                    </div>
-                    <div>
-                      {breed} - {data.contact.address.city}{" "}
-                      {data.contact.address.state}
-                    </div>
-                  </section>
+                    <span className="hvr-bounce-to-right">{data.name}</span>{" "}
+                  </h1>
+                  </Bounce>
+
+                  <Bounce right cascade>
+                    <section className="adoptionDetail__info">
+                      <div>
+                        {color}- {data.gender} - {data.age} - {data.status}
+                      </div>
+                      <div>
+                        {breed} - {data.contact.address.city}{" "}
+                        {data.contact.address.state}
+                      </div>
+                    </section>
+                  </Bounce>
+
                   <section className="adoptionDetail__tags">
-                    <TagGroup >
+                    <TagGroup>
                       {/* render TAG */}
                       {data.tags === null ? (
                         <div></div>
@@ -252,12 +269,16 @@ export default function AdoptionDetail() {
               <section className="adoptionDetail__shelter adoptionDetail__card">
                 {renderContact}
               </section>
+
+              <Fade duration={1500}>
               <section className="adoptionDetail__story adoptionDetail__card">
                 <h1 className="adoptionDetail__story-heading">My Story</h1>
                 <div className="adoptionDetail__story-body">
                   {data.description}
                 </div>
               </section>
+              </Fade>
+
             </section>
           </div>
         )}

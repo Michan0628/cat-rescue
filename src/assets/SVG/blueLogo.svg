@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="191.492" height="211.505" viewBox="0 0 191.492 211.505">
+  <g id="组_32" data-name="组 32" transform="translate(-351.902 -72.486)">
+    <g id="组_29" data-name="组 29">
+      <line id="直线_10" data-name="直线 10" x2="12.485" y2="0.158" transform="translate(528.317 143.546)" fill="none" stroke="#58b5c9" stroke-linecap="round" stroke-linejoin="round" stroke-width="5.118"/>
+      <line id="直线_11" data-name="直线 11" x2="8.756" y2="7.635" transform="translate(523.54 159.329)" fill="none" stroke="#58b5c9" stroke-linecap="round" stroke-linejoin="round" stroke-width="5.118"/>
+      <line id="直线_12" data-name="直线 12" x2="8.554" y2="3.268" transform="translate(527.192 152.216)" fill="none" stroke="#58b5c9" stroke-linecap="round" stroke-linejoin="round" stroke-width="5.118"/>
+    </g>
+    <g id="组_30" data-name="组 30">
+      <line id="直线_13" data-name="直线 13" x1="9.75" y1="7.8" transform="translate(419.846 103.092)" fill="none" stroke="#58b5c9" stroke-linecap="round" stroke-linejoin="round" stroke-width="5.118"/>
+      <line id="直线_14" data-name="直线 14" x1="11.612" y2="0.344" transform="translate(411.66 126.122)" fill="none" stroke="#58b5c9" stroke-linecap="round" stroke-linejoin="round" stroke-width="5.118"/>
+      <line id="直线_15" data-name="直线 15" x1="8.685" y1="2.903" transform="translate(416.279 115.404)" fill="none" stroke="#58b5c9" stroke-linecap="round" stroke-linejoin="round" stroke-width="5.118"/>
+    </g>
+    <g id="组_31" data-name="组 31">
+      <path id="路径_30" data-name="路径 30" d="M531.291,222.027l-36.84,47.78c-7.64,8.82-24.36,13.34-38.34,14.02-122.51,5.88-145.72-148.58-22.61-151.76h.03c1.37-6.6,1.88-8.02,5.1-12.99,0,0,.27-31.52,10.05-45.54,1.05-1.51,2.96-1.32,4.16.1,7.58,8.97,13.63,19.15,15.62,27.74a45.252,45.252,0,0,1,12.94.46,49.213,49.213,0,0,1,14.36,5.01q14.16-10.455,35.26-13.54a2.4,2.4,0,0,1,2.69,2.85c-3,15.17-8.62,29.38-14.47,41.51l-.02.02a31.3,31.3,0,0,1-.21,9.84l-.02.08a24.557,24.557,0,0,1-5.23,11.72l-2.82,6.52C531.751,173.257,547.081,197.467,531.291,222.027Z" fill="#90cbd9"/>
+      <path id="路径_31" data-name="路径 31" d="M431.78,244.172C388.3,217.69,426.811,153.84,469.454,179.6c11.148-17.335,28.579-20.49,43.273-15.264" fill="none" stroke="#fff" stroke-linecap="round" stroke-miterlimit="10" stroke-width="3"/>
+      <path id="路径_32" data-name="路径 32" d="M452.192,134.937c2.385,5.2,6.7,7.582,13.271,6.815" fill="none" stroke="#fff" stroke-linecap="round" stroke-miterlimit="10" stroke-width="3"/>
+      <path id="路径_33" data-name="路径 33" d="M480.538,145.893c3.7,4.365,8.5,5.489,14.619,2.974" fill="none" stroke="#fff" stroke-linecap="round" stroke-miterlimit="10" stroke-width="3"/>
+    </g>
+  </g>
+</svg>
