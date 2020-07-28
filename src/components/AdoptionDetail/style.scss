@@ -137,9 +137,12 @@ a{
   &__heading{
     padding-top: 4rem;
     margin-bottom: 4rem;
+    display: flex;
+    justify-content: baseline;
   }
   &__highlight{
     color:$primary-color;
+    margin-left: 2rem;
   }
   &__list{
     display: flex;

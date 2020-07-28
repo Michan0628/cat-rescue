@@ -11,7 +11,7 @@ import Bounce from "react-reveal/Bounce";
 import Fade from 'react-reveal/Fade';
 
 const TOKEN =
-  "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJGaHluMzBBMkk0d1h0aWtvZWdtOThlbzVaUEpKZFBpMUVmMXppV01sc3VrUjMwMlJVTSIsImp0aSI6IjU3MjczYWI3YjIwNmJiZGY1NWQwZGQ4NmU2MGU2ZGVlYjgxNjljMzNkZDdjYWQ5NzRhNjYwODhhY2U5MTJiNGVkNmM3MWM5YjA5ZDM1M2EzIiwiaWF0IjoxNTk1OTEwNDc5LCJuYmYiOjE1OTU5MTA0NzksImV4cCI6MTU5NTkxNDA3OSwic3ViIjoiIiwic2NvcGVzIjpbXX0.g0gy893aPfFj-fZkW_YD3Ois2WjC-UnNfg_G0OXQ1-tkIWDpRBu1cXhicSrUcUr_R8dtjYd7pWJ4i8cTR8w2ye60CdJ-G7Yi5ygyssm1-IOK1dyjbMeHjpB92OgNq_Dh3dfCVIzfumiBhlhuoFeDMij4nu86UGyUvsHXoTC1SYqVRkWEd5Mb58z6tvtswNENn9MNwaPUbPDPwNAUddN1WrI24AvWwT_0EtQD9iLpmM81hsQuEdZwkO_0GwOeqrBfAmryL2mvhyopBzFX4uT7gtL16aBMSzRvMbCZEcoRd-Bp5FrHWTSUucGPbXKolikx-OZa9iYi9INmZrBVZfpaC";
+  "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJGaHluMzBBMkk0d1h0aWtvZWdtOThlbzVaUEpKZFBpMUVmMXppV01sc3VrUjMwMlJVTSIsImp0aSI6Ijg3M2ZiYWIzMjBiMzIyNGU3N2E2M2U1MDU1ZjIyOGExNGFiYjY0ODk0ODJlN2Y3OGEyYzJkOTcwNzk3OGIwNGY5OWY3NTEzOTZkZjcxMmQ1IiwiaWF0IjoxNTk1OTQ5NDkyLCJuYmYiOjE1OTU5NDk0OTIsImV4cCI6MTU5NTk1MzA5Miwic3ViIjoiIiwic2NvcGVzIjpbXX0.s-ecOO9z5Ik9aAJqiSm0nu7_YqinQpFjoPYgBnWQWkyb07iSeNsmut_qBOZ5jttHIj2VgPctBmaDXnstpee3cjT8wVeSnMUXgCinv1vEHSO4J8sgfAm7iqyGjiXu2Qqwp9qZ76Or4fQT_45uA1quCXV2hgLN_JOUX56oE5VIPhSXqO8tw_T6sMdmckqvKxIkcbCHmeZTyZcrd3YVl6ol5PTJaZp8FsWEyso0hBMYHoHKJh5SqzeUiu473vxy2edlBNhDpACCx4yRjOB8oE9z8UyspBUVymeKfs5GcwmBgOXScxsGxEaD2xELQTaE7oGpdX_ev4B7uc9qP5qlVwXmB";
 
 export default function AdoptionDetail() {
   let { id } = useParams();
@@ -159,9 +159,9 @@ export default function AdoptionDetail() {
     shelterContact && recommend ? (
       <>
         <h1 className="recommend__heading">
-          Other Cats from{" "}
+          Other Cats from {" "}
           <span className="recommend__highlight hvr-bounce-to-right">
-            {shelterContact.name}
+             {shelterContact.name}
           </span>
         </h1>
 
