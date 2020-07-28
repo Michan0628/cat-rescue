@@ -21,8 +21,6 @@
     align-items: center;
   }
   &__right {
-    position: absolute;
-    right: 4rem;
     height: 70%;
   }
   &__heading {
@@ -53,4 +51,37 @@
     height: 100%;
   }
 
+}
+
+.img{
+  &__cat{
+    position: absolute;
+    right:10rem;
+    top:24rem;
+    width: 40rem;
+
+  }
+  &__bubble1{
+    position: absolute;
+    right: 43rem;
+    top: 21rem;
+    width: 20rem;
+  }
+  &__bubble2{
+    position: absolute;
+    right: 8rem;
+    top: 15rem;
+    width: 17rem;
+  } &__bubble3{
+    position: absolute;
+    right: 6rem;
+    top: 53rem;
+    width: 17rem;
+  }
+  &__bubble4{
+    position: absolute;
+    right: 45rem;
+    top: 52rem;
+    width: 14rem;
+  }
 }

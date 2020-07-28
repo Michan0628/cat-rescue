@@ -151,7 +151,7 @@ export default function AdoptionDetail() {
       </section>
     </>
   ) : (
-    <h5 className="adoptionDetail__isLoading">Loading...</h5>
+    <h5 className="adoptionDetail__isLoading loading__shelter">Loading...</h5>
   );
 
   // Render recommen list
@@ -178,7 +178,7 @@ export default function AdoptionDetail() {
         </section>
       </>
     ) : (
-      <h5 className="recommend__loading">Loading...</h5>
+      <h5 className="recommend__loading loading__recommend">Loading...</h5>
     );
   return (
     <>
@@ -186,7 +186,7 @@ export default function AdoptionDetail() {
         {/* render cat */}
 
         {isLoading ? (
-          <h1>Loading...</h1>
+          <h1 className='loading__profile'>Loading...</h1>
         ) : (
           <div className="adoptionDetail__container">
             <section className="adoptionDetail__hero">

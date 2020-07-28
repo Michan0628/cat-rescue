@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
+import Fade from 'react-reveal/Fade';
 import Card from "../Card/Card";
 import axios from "axios";
 import "./style.scss";
@@ -12,7 +13,7 @@ import breed from "../../data/breed.json";
 import color from "../../data/color.json";
 
 const TOKEN =
-  "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIweGpDSkR6M3VIWWRIeWZFbU1uVExiMkhUd1dnSHNjTkxnclhYMGp0NkloUkNSek1obyIsImp0aSI6ImRmZmFmZTY3YTAzNTliNTAyZWNkNDhkYzZjMjM0MTdmN2RlM2Q3MWEwMDk4ZjQ5ZWRkMTFjM2M4OTg3NWNlMmExOWRmYTExMWVlZDNmOWQwIiwiaWF0IjoxNTk1ODM4MzY1LCJuYmYiOjE1OTU4MzgzNjUsImV4cCI6MTU5NTg0MTk2NSwic3ViIjoiIiwic2NvcGVzIjpbXX0.K-KD4kLE1QPSibHcAEaXxG1L4NjLUSmeoHS9_YqLD58kls8nqm0g8LxiLFP8liVjIHqtD7ixP-K7GznOQ2NSGHCAuDPawQEqgId1adt6VZxECd0LLrnxi2GLhm1Gno1qMUBAjJulW1r0yWQTuCMVKiDB3jpXiZg1DAIt_MnoQAgXXxeXDRCAcFiWzyLXJysJjAIGvpxbVEnJ_863F8FSbbVsY9gENcSlaOm8TTMyPpIwsnYir-xXjCmeAagMtQwSQpJ-wtaQx4RwsXBRaDmZ-8uOHQgSc4Ey7qN0tjl9uKgvKsJwqKH62SU5c9TEFrniH7jx0dqs2V3WTimqQGGUkA";
+  "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJGaHluMzBBMkk0d1h0aWtvZWdtOThlbzVaUEpKZFBpMUVmMXppV01sc3VrUjMwMlJVTSIsImp0aSI6IjgyYmYzNjAyZDQwYjVhMmUyZjdmNGQxNWU0MTBhY2E0ODlmZmU5NDg2Njg4NWUxODgzMmY4YTUzNDNhMjM5ZWM3YjU4ZjJjODNhNWRhOTIzIiwiaWF0IjoxNTk1OTA2MDI0LCJuYmYiOjE1OTU5MDYwMjQsImV4cCI6MTU5NTkwOTYyNCwic3ViIjoiIiwic2NvcGVzIjpbXX0.hfo7LS42hSnAdzV9bNG8-xHPvV2_60O_XPh4xWhqN_p30Zq-4eQ9bDFO3tvT69iyohL84sboWtpJLfh5fE1knnHRWww7EoaOuyV1HEtLKdYxMK9yfOq4GFrTkg3fVI56vMwUjEmWLqGjqfO85rzHyNmWXemj2W018qFOi9A0v7-lktQe96mrgOkd6szmHnGlgIb1asHgFmOzjIbt2AG2XMHbwI7Ed8Im_5DNTJBjN0Kkr8iW1YQ8Vj3N3iDZDOdT_fpj7fM8a-wPBS9vKQtY22LEyEqiYiLsEau0_Ywnhpo_Xcecn_cnkS4rDdt3QWzIIPoYqi3mn_hhaxFyT-iR3";
 
 // tags data
 const breedTags = breed.map((item) => ({
@@ -306,6 +307,7 @@ export default function Adoption() {
             {isLoading ? (
               <h1>Loading...</h1>
             ) : (
+              <Fade bottom cascade>
               <div className="adoptionSearch__container">
                 {result.map((cat) => (
                 <Link key={cat.id} to={`/adoption/${cat.id}`}>
@@ -313,6 +315,7 @@ export default function Adoption() {
                 </Link>
                 ))}
               </div>
+              </Fade>
             )}
 
             <div className="adoptionSearch__pagination">

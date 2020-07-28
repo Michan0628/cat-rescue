@@ -1,9 +1,11 @@
 import React from 'react'
 import './style.scss'
+import Bounce from 'react-reveal/Bounce';
 
 export default function Footer() {
     return (
         <div className='footer'>
+<Bounce right cascade duration={1500}>
             <div className="footer__container">
                 <div className="footer__card footer__card-one">
                     <div className="footer__card-heading">
@@ -29,6 +31,7 @@ export default function Footer() {
                     </div>
                 </div>
             </div>
+            </Bounce>
 
             <div className="footer__icons">
 
