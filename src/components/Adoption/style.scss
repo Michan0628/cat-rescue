@@ -76,9 +76,9 @@
   }
   &__notFound{
     height:50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    display: grid;
+    place-items:center;
+
   }
   &__container {
     display: flex;

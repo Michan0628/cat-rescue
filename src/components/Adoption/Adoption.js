@@ -305,7 +305,12 @@ export default function Adoption() {
           <section className="adoptionSearch__result">
             {/* loading */}
             {!isLoading && result.length === 0 && (
-              <h1 className="adoptionSearch__notFound">No cats found...</h1>
+              <div className="adoptionSearch__notFound">
+
+              <h1 className="adoptionSearch__notFound-heading">No cats found...</h1>
+              <img src={require('../../assets/SVG/fish.svg')} alt="" className="adoptionSearch__notFound-img"/>
+              </div>
+
             )}
 
             {/* render cat */}
